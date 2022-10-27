@@ -2,11 +2,11 @@ package mobi.appcent.helium.model;
 
 public class Status {
     private String timestamp;
-    private String height;
+    private int height;
     private String online;
     private String[] listenAddrs;
 
-    public Status(String timestamp, String height, String online, String[] listenAddrs) {
+    public Status(String timestamp, int height, String online, String[] listenAddrs) {
         this.timestamp = timestamp;
         this.height = height;
         this.online = online;
@@ -21,11 +21,11 @@ public class Status {
         this.timestamp = timestamp;
     }
 
-    public String getHeight() {
+    public int getHeight() {
         return height;
     }
 
-    public void setHeight(String height) {
+    public void setHeight(int height) {
         this.height = height;
     }
 
