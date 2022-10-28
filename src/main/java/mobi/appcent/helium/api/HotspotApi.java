@@ -6,7 +6,6 @@ import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -79,14 +78,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsByGivenName getHotspotsByGivenName() throws IOException {
-        return new APIgetHotspotsByGivenName();
+    public APIgetHotspotsByGivenNameRequest getHotspotsByGivenName() throws IOException {
+        return new APIgetHotspotsByGivenNameRequest();
     }
 
-    public class APIgetHotspotsByGivenName{
+    public class APIgetHotspotsByGivenNameRequest {
         private String name;
-        public APIgetHotspotsByGivenName() {}
-        public APIgetHotspotsByGivenName name(String name) {
+        public APIgetHotspotsByGivenNameRequest() {}
+        public APIgetHotspotsByGivenNameRequest name(String name) {
             this.name = name;
             return this;
         }
@@ -100,14 +99,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByGivenName searchHotspotsByGivenName() throws IOException {
-        return new APIsearchHotspotsByGivenName();
+    public APIsearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws IOException {
+        return new APIsearchHotspotsByGivenNameRequest();
     }
 
-    public class APIsearchHotspotsByGivenName{
+    public class APIsearchHotspotsByGivenNameRequest {
         private String name;
-        public APIsearchHotspotsByGivenName() {}
-        public APIsearchHotspotsByGivenName name(String name) {
+        public APIsearchHotspotsByGivenNameRequest() {}
+        public APIsearchHotspotsByGivenNameRequest name(String name) {
             this.name = name;
             return this;
         }
@@ -123,26 +122,26 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByLocationDistance searchHotspotsByLocationDistance() throws IOException {
-        return new APIsearchHotspotsByLocationDistance();
+    public APIsearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws IOException {
+        return new APIsearchHotspotsByLocationDistanceRequest();
     }
 
-    public class APIsearchHotspotsByLocationDistance{
+    public class APIsearchHotspotsByLocationDistanceRequest {
         private float lat;
         private float lon;
         private int distance;
-        public APIsearchHotspotsByLocationDistance() {}
-        public APIsearchHotspotsByLocationDistance lat(float lat) {
+        public APIsearchHotspotsByLocationDistanceRequest() {}
+        public APIsearchHotspotsByLocationDistanceRequest lat(float lat) {
             this.lat = lat;
             return this;
         }
 
-        public APIsearchHotspotsByLocationDistance lon(float lon) {
+        public APIsearchHotspotsByLocationDistanceRequest lon(float lon) {
             this.lon = lon;
             return this;
         }
 
-        public APIsearchHotspotsByLocationDistance distance(int distance) {
+        public APIsearchHotspotsByLocationDistanceRequest distance(int distance) {
             this.distance = distance;
             return this;
         }
@@ -159,32 +158,32 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByLocationBox searchHotspotsByLocationBox() throws IOException {
-        return new APIsearchHotspotsByLocationBox();
+    public APIsearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws IOException {
+        return new APIsearchHotspotsByLocationBoxRequest();
     }
 
-    public class APIsearchHotspotsByLocationBox{
+    public class APIsearchHotspotsByLocationBoxRequest {
         private float swlat;
         private float swlon;
         private float nelat;
         private float nelon;
-        public APIsearchHotspotsByLocationBox() {}
-        public APIsearchHotspotsByLocationBox swlat(float swlat) {
+        public APIsearchHotspotsByLocationBoxRequest() {}
+        public APIsearchHotspotsByLocationBoxRequest swlat(float swlat) {
             this.swlat = swlat;
             return this;
         }
 
-        public APIsearchHotspotsByLocationBox swlon(float swlon) {
+        public APIsearchHotspotsByLocationBoxRequest swlon(float swlon) {
             this.swlon = swlon;
             return this;
         }
 
-        public APIsearchHotspotsByLocationBox nelat(int nelat) {
+        public APIsearchHotspotsByLocationBoxRequest nelat(int nelat) {
             this.nelat = nelat;
             return this;
         }
 
-        public APIsearchHotspotsByLocationBox nelon(int nelon) {
+        public APIsearchHotspotsByLocationBoxRequest nelon(int nelon) {
             this.nelon = nelon;
             return this;
         }
@@ -202,13 +201,13 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsByGivenH3Index getHotspotsByGivenH3Index(String index) throws IOException {
-        return new APIgetHotspotsByGivenH3Index(index);
+    public APIgetHotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws IOException {
+        return new APIgetHotspotsByGivenH3IndexRequest(index);
     }
 
-    public class APIgetHotspotsByGivenH3Index{
+    public class APIgetHotspotsByGivenH3IndexRequest {
         private String index;
-        public APIgetHotspotsByGivenH3Index(String index) { this.index = index; }
+        public APIgetHotspotsByGivenH3IndexRequest(String index) { this.index = index; }
 
         public HotspotResponse execute() throws IOException {
             String path = path()+"/hex/"+index;
@@ -219,37 +218,37 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotRoles getHotspotRoles(@NotNull String address) throws IOException {
-        return new APIgetHotspotRoles(address);
+    public APIgetHotspotRolesRequest getHotspotRoles(@NotNull String address) throws IOException {
+        return new APIgetHotspotRolesRequest(address);
     }
 
-    public class APIgetHotspotRoles{
+    public class APIgetHotspotRolesRequest {
         private final String address;
         private String cursor;
         private String filterTypes;
         private String minTime;
         private String maxTime;
         private int limit;
-        public APIgetHotspotRoles(String address) { this.address = address; }
-        public APIgetHotspotRoles cursor(String cursor) {
+        public APIgetHotspotRolesRequest(String address) { this.address = address; }
+        public APIgetHotspotRolesRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
 
-        public APIgetHotspotRoles filterTypes(String filterTypes) {
+        public APIgetHotspotRolesRequest filterTypes(String filterTypes) {
             this.filterTypes = filterTypes;
             return this;
         }
 
-        public APIgetHotspotRoles maxTime(String maxTime) {
+        public APIgetHotspotRolesRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
-        public APIgetHotspotRoles limit(int limit) {
+        public APIgetHotspotRolesRequest limit(int limit) {
             this.limit = limit;
             return this;
         }
-        public APIgetHotspotRoles minTime(String minTime) {
+        public APIgetHotspotRolesRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
@@ -270,16 +269,16 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsRolesCount getHotspotsRolesCount(@NotNull String address) throws IOException {
-        return new APIgetHotspotsRolesCount(address);
+    public APIgetHotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws IOException {
+        return new APIgetHotspotsRolesCountRequest(address);
     }
 
-    public class APIgetHotspotsRolesCount{
+    public class APIgetHotspotsRolesCountRequest {
         private final String address;
         private String filterTypes;
-        public APIgetHotspotsRolesCount(String address) { this.address = address; }
+        public APIgetHotspotsRolesCountRequest(String address) { this.address = address; }
 
-        public APIgetHotspotsRolesCount filterTypes(String filterTypes) {
+        public APIgetHotspotsRolesCountRequest filterTypes(String filterTypes) {
             this.filterTypes = filterTypes;
             return this;
         }
@@ -295,35 +294,35 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotElections getHotspotElections(@NotNull String address) throws IOException {
-        return new APIgetHotspotElections(address);
+    public APIgetHotspotElectionsRequest getHotspotElections(@NotNull String address) throws IOException {
+        return new APIgetHotspotElectionsRequest(address);
     }
 
-    public class APIgetHotspotElections{
+    public class APIgetHotspotElectionsRequest {
         private final String address;
         private String cursor;
         private String minTime;
         private String maxTime;
         private int limit;
 
-        public APIgetHotspotElections cursor(String cursor) {
+        public APIgetHotspotElectionsRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
 
-        public APIgetHotspotElections maxTime(String maxTime) {
+        public APIgetHotspotElectionsRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
-        public APIgetHotspotElections limit(int limit) {
+        public APIgetHotspotElectionsRequest limit(int limit) {
             this.limit = limit;
             return this;
         }
-        public APIgetHotspotElections minTime(String minTime) {
+        public APIgetHotspotElectionsRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
-        public APIgetHotspotElections(String address) { this.address = address; }
+        public APIgetHotspotElectionsRequest(String address) { this.address = address; }
 
         public HotspotElectionsResponse execute() throws IOException {
             String path = path()+"/"+address+"/elections";
@@ -339,12 +338,12 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetElectedHotspots getElectedHotspots() throws IOException {
-        return new APIgetElectedHotspots();
+    public APIgetElectedHotspotsRequest getElectedHotspots() throws IOException {
+        return new APIgetElectedHotspotsRequest();
     }
 
-    public class APIgetElectedHotspots{
-        public APIgetElectedHotspots() {  }
+    public class APIgetElectedHotspotsRequest {
+        public APIgetElectedHotspotsRequest() {  }
 
         public HotspotsResponse execute() throws IOException {
             String path = path()+"/elected";
@@ -355,35 +354,35 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotChallanges getHotspotChallanges(@NotNull String address) throws IOException {
-        return new APIgetHotspotChallanges(address);
+    public APIgetHotspotChallangesRequest getHotspotChallanges(@NotNull String address) throws IOException {
+        return new APIgetHotspotChallangesRequest(address);
     }
 
-    public class APIgetHotspotChallanges{
+    public class APIgetHotspotChallangesRequest {
         private final String address;
         private String cursor;
         private String minTime;
         private String maxTime;
         private int limit;
 
-        public APIgetHotspotChallanges cursor(String cursor) {
+        public APIgetHotspotChallangesRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
 
-        public APIgetHotspotChallanges maxTime(String maxTime) {
+        public APIgetHotspotChallangesRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
-        public APIgetHotspotChallanges limit(int limit) {
+        public APIgetHotspotChallangesRequest limit(int limit) {
             this.limit = limit;
             return this;
         }
-        public APIgetHotspotChallanges minTime(String minTime) {
+        public APIgetHotspotChallangesRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
-        public APIgetHotspotChallanges(String address) { this.address = address; }
+        public APIgetHotspotChallangesRequest(String address) { this.address = address; }
 
         public HotspotChallangesResponse execute() throws IOException {
             String path = path()+"/"+address+"/challenges";
@@ -399,31 +398,31 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetRewardsForHotspot getRewardsForHotspot(@NotNull String address) throws IOException {
-        return new APIgetRewardsForHotspot(address);
+    public APIgetRewardsForHotspotRequest getRewardsForHotspot(@NotNull String address) throws IOException {
+        return new APIgetRewardsForHotspotRequest(address);
     }
 
-    public class APIgetRewardsForHotspot{
+    public class APIgetRewardsForHotspotRequest {
         private final String address;
         private String cursor;
         private String minTime;
         private String maxTime;
 
-        public APIgetRewardsForHotspot cursor(String cursor) {
+        public APIgetRewardsForHotspotRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
 
-        public APIgetRewardsForHotspot maxTime(String maxTime) {
+        public APIgetRewardsForHotspotRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetRewardsForHotspot minTime(String minTime) {
+        public APIgetRewardsForHotspotRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
-        public APIgetRewardsForHotspot(String address) { this.address = address; }
+        public APIgetRewardsForHotspotRequest(String address) { this.address = address; }
 
         public HotspotRewardResponse execute() throws IOException {
             String path = path()+"/"+address+"/rewards";
@@ -439,14 +438,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
     //TODO Docs doesn't have block param
     @Override
-    public APIgetRewardsForHotspotByGivenRewardBlock getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException {
-        return new APIgetRewardsForHotspotByGivenRewardBlock(address);
+    public APIgetRewardsForHotspotByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException {
+        return new APIgetRewardsForHotspotByGivenRewardBlockRequest(address);
     }
 
-    public class APIgetRewardsForHotspotByGivenRewardBlock{
+    public class APIgetRewardsForHotspotByGivenRewardBlockRequest {
         private final String address;
 
-        public APIgetRewardsForHotspotByGivenRewardBlock(String address) { this.address = address; }
+        public APIgetRewardsForHotspotByGivenRewardBlockRequest(String address) { this.address = address; }
 
         public HotspotRewardResponse execute() throws IOException {
             String path = path()+"/"+address+"/rewards/";
@@ -458,29 +457,29 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
     //TODO actual response is different from docs
     @Override
-    public APIgetTotalRewardForHotspot getTotalRewardForHotspot(@NotNull String address) throws IOException {
-        return new APIgetTotalRewardForHotspot(address);
+    public APIgetTotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws IOException {
+        return new APIgetTotalRewardForHotspotRequest(address);
     }
 
-    public class APIgetTotalRewardForHotspot{
+    public class APIgetTotalRewardForHotspotRequest {
         private final String address;
         private String maxTime;
         private String minTime;
         private String bucket;
 
-        public APIgetTotalRewardForHotspot(String address) { this.address = address; }
+        public APIgetTotalRewardForHotspotRequest(String address) { this.address = address; }
 
-        public APIgetTotalRewardForHotspot maxTime(String maxTime) {
+        public APIgetTotalRewardForHotspotRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetTotalRewardForHotspot minTime(String minTime) {
+        public APIgetTotalRewardForHotspotRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
 
-        public APIgetTotalRewardForHotspot bucket(String bucket) {
+        public APIgetTotalRewardForHotspotRequest bucket(String bucket) {
             this.bucket = bucket;
             return this;
         }
@@ -498,14 +497,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetWitnessesForHotspot getWitnessesForHotspot(@NotNull String address) throws IOException {
-        return new APIgetWitnessesForHotspot(address);
+    public APIgetWitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws IOException {
+        return new APIgetWitnessesForHotspotRequest(address);
     }
 
-    public class APIgetWitnessesForHotspot{
+    public class APIgetWitnessesForHotspotRequest {
         private final String address;
 
-        public APIgetWitnessesForHotspot(String address) { this.address = address; }
+        public APIgetWitnessesForHotspotRequest(String address) { this.address = address; }
 
         public HotspotsResponse execute() throws IOException {
             String path = path()+"/"+address+"/witnesses";
@@ -516,14 +515,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetWitnessedForHotspot getWitnessedForHotspot(@NotNull String address) throws IOException {
-        return new APIgetWitnessedForHotspot(address);
+    public APIgetWitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws IOException {
+        return new APIgetWitnessedForHotspotRequest(address);
     }
 
-    public class APIgetWitnessedForHotspot{
+    public class APIgetWitnessedForHotspotRequest {
         private final String address;
 
-        public APIgetWitnessedForHotspot(String address) { this.address = address; }
+        public APIgetWitnessedForHotspotRequest(String address) { this.address = address; }
 
         public HotspotsResponse execute() throws IOException {
             String path = path()+"/"+address+"/witnessed";
