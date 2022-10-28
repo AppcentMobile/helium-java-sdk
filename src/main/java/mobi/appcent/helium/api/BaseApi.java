@@ -30,7 +30,7 @@ abstract class BaseApi {
         this.sdkClient = sdkClient;
     }
 
-    public <T> T execute(Call call, Type returnType) throws IOException {
+    protected  <T> T execute(Call call, Type returnType) throws IOException {
         try {
             Response response = call.execute();
             return handleResponse(response, returnType);

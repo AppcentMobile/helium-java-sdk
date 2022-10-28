@@ -9,6 +9,7 @@ import okhttp3.OkHttpClient;
  */
 public class HeliumApi {
     private final HotspotApi hotspotApi = HotspotApi.getInstance();
+    private final StatApi statApi = StatApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -22,9 +23,14 @@ public class HeliumApi {
     private void initOkHttpClients(OkHttpClient client) {
         sdkClient.setOkHttpClient(client);
         hotspotApi.setSdkClient(sdkClient);
+        statApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
         return hotspotApi;
+    }
+
+    public StatApi stats() {
+        return statApi;
     }
 }
