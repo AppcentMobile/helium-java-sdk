@@ -51,11 +51,13 @@ public class HeliumSdkClient {
     private String buildUrl(String path, List<Pair> queryParams) {
         final StringBuilder url = new StringBuilder();
         url.append(path);
+        Boolean haveQueryParams = false;
         for (int i = 0; i < queryParams.size(); i++) {
             Pair pair = queryParams.get(i);
             if (pair.getValue() != null) {
-                if (i == 0) {
+                if (!haveQueryParams) {
                     url.append("?");
+                    haveQueryParams = true;
                 }
                 url.append(pair.getKey().toString()).append("=")
                         .append(pair.getValue().toString());

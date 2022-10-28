@@ -7,38 +7,38 @@ import org.jetbrains.annotations.Nullable;
 import java.io.IOException;
 
 public interface IHotspotApi {
-    public HotspotsResponse getHotspots(@Nullable String cursor, @Nullable String filterModes) throws IOException;
+    public HotspotApi.APIgetHotspotsRequest getHotspots() throws IOException;
 
-    public HotspotResponse getHotspotByGivenAdress(@Nullable String address) throws IOException;
+    public HotspotApi.APIgetHotspotByGivenAdressRequest getHotspotByGivenAdress() throws IOException;
 
-    public HotspotsResponse getHotspotsByGivenName(@Nullable String name) throws IOException;
+    public HotspotApi.APIgetHotspotsByGivenName getHotspotsByGivenName() throws IOException;
 
-    public HotspotsResponse searchHotspotsByGivenName(@Nullable String name) throws IOException;
+    public HotspotApi.APIsearchHotspotsByGivenName searchHotspotsByGivenName() throws IOException;
 
-    public HotspotsResponse searchHotspotsByLocationDistance(float lat, float lon, int distance) throws IOException;
+    public HotspotApi.APIsearchHotspotsByLocationDistance searchHotspotsByLocationDistance() throws IOException;
 
-    public HotspotsResponse searchHotspotsByLocationBox(float swlat, float swlon, float nelat, float nelon) throws IOException;
+    public HotspotApi.APIsearchHotspotsByLocationBox searchHotspotsByLocationBox() throws IOException;
 
-    public HotspotsResponse getHotspotsByGivenH3Index(String index) throws IOException;
+    public HotspotApi.APIgetHotspotsByGivenH3Index getHotspotsByGivenH3Index(String index) throws IOException;
 
-    public HotspotRolesResponse getHotspotRoles(@NotNull String address, @Nullable String cursor, @Nullable String filterTypes, @Nullable String minTime, @Nullable String maxTime, @Nullable String limit) throws IOException;
+    public HotspotApi.APIgetHotspotRoles getHotspotRoles(@NotNull String address) throws IOException;
 
-    public HotspotsRolesCountResponse getHotspotsRolesCount(@NotNull String address, @Nullable String filterTypes) throws IOException;
+    public HotspotApi.APIgetHotspotsRolesCount getHotspotsRolesCount(@NotNull String address) throws IOException;
 
-    public HotspotElectionsResponse getHotspotElections(@NotNull String address, @Nullable String cursor, @Nullable String minTime, @Nullable String maxTime, @Nullable String limit) throws IOException;
+    public HotspotApi.APIgetHotspotElections getHotspotElections(@NotNull String address) throws IOException;
 
-    public HotspotsResponse getElectedHotspots() throws IOException;
+    public HotspotApi.APIgetElectedHotspots getElectedHotspots() throws IOException;
 
-    public HotspotChallangesResponse getHotspotChallanges(@NotNull String address, @Nullable String cursor, @Nullable String minTime, @Nullable String maxTime, @Nullable String limit) throws IOException;
+    public HotspotApi.APIgetHotspotChallanges getHotspotChallanges(@NotNull String address) throws IOException;
 
-    public HotspotRewardResponse getRewardsForHotspot(@NotNull String address, @Nullable String cursor, @Nullable String maxTime, @Nullable String minTime) throws IOException;
+    public HotspotApi.APIgetRewardsForHotspot getRewardsForHotspot(@NotNull String address) throws IOException;
 
-    public HotspotRewardResponse getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException;
+    public HotspotApi.APIgetRewardsForHotspotByGivenRewardBlock getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException;
 
-    public HotspotTotalRewardResponse getTotalRewardForHotspot(@NotNull String address, @Nullable String maxTime, @Nullable String minTime, @Nullable String bucket) throws IOException;
+    public HotspotApi.APIgetTotalRewardForHotspot getTotalRewardForHotspot(@NotNull String address) throws IOException;
 
-    public HotspotsResponse getWitnessesForHotspot(@NotNull String address) throws IOException;
+    public HotspotApi.APIgetWitnessesForHotspot getWitnessesForHotspot(@NotNull String address) throws IOException;
 
-    public HotspotsResponse getWitnessedForHotspot(@NotNull String address) throws IOException;
+    public HotspotApi.APIgetWitnessedForHotspot getWitnessedForHotspot(@NotNull String address) throws IOException;
 
 }
