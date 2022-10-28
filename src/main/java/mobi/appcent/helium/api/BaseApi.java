@@ -30,11 +30,10 @@ abstract class BaseApi {
         this.sdkClient = sdkClient;
     }
 
-    public <T> ApiResponse<T> execute(Call call, Type returnType) throws IOException {
+    public <T> T execute(Call call, Type returnType) throws IOException {
         try {
             Response response = call.execute();
-            T resp = handleResponse(response, returnType);
-            return new ApiResponse<T>(response.code(), resp);
+            return handleResponse(response, returnType);
         } catch (IOException e) {
             throw new IOException("Error");
         }
@@ -44,8 +43,7 @@ abstract class BaseApi {
     private <T> T handleResponse(Response response, Type returnType) throws IOException {
         if(response.isSuccessful()) {
             if (response.body() != null) {
-                T data = deserialize(response.body().string(), returnType);
-                return data;
+                return deserialize(response.body().string(), returnType);
             }
         }
         return null;

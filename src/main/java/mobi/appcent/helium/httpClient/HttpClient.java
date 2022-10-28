@@ -8,7 +8,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 public class HttpClient {
     private final OkHttpClient httpClient;
 
-    private HttpClient(String baseApiUrl) {
+    private HttpClient() {
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.level(HttpLoggingInterceptor.Level.BASIC);
         httpClient = new OkHttpClient().newBuilder()
@@ -21,8 +21,8 @@ public class HttpClient {
                 }).build();
     }
 
-    public static OkHttpClient client(String baseApiUrl) {
-        return new HttpClient(baseApiUrl).httpClient;
+    public static OkHttpClient client() {
+        return new HttpClient().httpClient;
     }
 
 }

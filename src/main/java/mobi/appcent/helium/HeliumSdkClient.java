@@ -20,7 +20,7 @@ public class HeliumSdkClient {
     }
 
     public void initOkHttpClient() {
-        this.client = HttpClient.client(BASE_API_URL);
+        this.client = HttpClient.client();
     }
 
     //TODO: Override base url
@@ -36,7 +36,6 @@ public class HeliumSdkClient {
         return this.client;
     }
 
-
     public Call buildCall(String path, HttpMethod method, List<Pair> queryParams, Object requestBody, Map<String, String> headers) {
         String url = buildUrl(path, queryParams);
         RequestBody body = buildRequestBody(requestBody);
@@ -51,13 +50,18 @@ public class HeliumSdkClient {
 
     private String buildUrl(String path, List<Pair> queryParams) {
         final StringBuilder url = new StringBuilder();
-        url.append(path).append("?");
+        url.append(path);
         for (int i = 0; i < queryParams.size(); i++) {
             Pair pair = queryParams.get(i);
-            url.append(pair.getKey().toString()).append("=")
-                    .append(pair.getValue().toString());
-            if (i != queryParams.size() - 1)
-                url.append("&");
+            if (pair.getValue() != null) {
+                if (i == 0) {
+                    url.append("?");
+                }
+                url.append(pair.getKey().toString()).append("=")
+                        .append(pair.getValue().toString());
+                if (i != queryParams.size() - 1)
+                    url.append("&");
+            }
         }
         return url.toString();
     }
