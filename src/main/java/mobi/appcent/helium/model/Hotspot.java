@@ -2,8 +2,6 @@ package mobi.appcent.helium.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-
 public class Hotspot {
     @SerializedName(value = "score_update_height")
     private int scoreUpdateHeight;

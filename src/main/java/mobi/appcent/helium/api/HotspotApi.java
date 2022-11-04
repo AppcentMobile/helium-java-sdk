@@ -1,7 +1,6 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
-import javafx.util.Pair;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import okhttp3.Call;
@@ -48,8 +47,8 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
         public HotspotsResponse execute() throws IOException {
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
-            queryParams.add(new Pair("filter_modes", filterModes));
+            queryParams.add(Pair.create("cursor", cursor));
+            queryParams.add(Pair.create("filter_modes", filterModes));
             Call call = sdkClient.buildCall(path(), HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotsResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -114,7 +113,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotResponse execute() throws IOException {
             String path = path()+"/name";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("search", name));
+            queryParams.add(Pair.create("search", name));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -127,9 +126,9 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     public class APIsearchHotspotsByLocationDistanceRequest {
-        private float lat;
-        private float lon;
-        private int distance;
+        private Float lat;
+        private Float lon;
+        private Integer distance;
         public APIsearchHotspotsByLocationDistanceRequest() {}
         public APIsearchHotspotsByLocationDistanceRequest lat(float lat) {
             this.lat = lat;
@@ -148,9 +147,9 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotResponse execute() throws IOException {
             String path = path()+"/location/distance";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("lat", lat));
-            queryParams.add(new Pair("lon", lon));
-            queryParams.add(new Pair("distance", distance));
+            queryParams.add(Pair.create("lat", lat));
+            queryParams.add(Pair.create("lon", lon));
+            queryParams.add(Pair.create("distance", distance));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -163,10 +162,10 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     public class APIsearchHotspotsByLocationBoxRequest {
-        private float swlat;
-        private float swlon;
-        private float nelat;
-        private float nelon;
+        private Float swlat;
+        private Float swlon;
+        private Integer nelat;
+        private Integer nelon;
         public APIsearchHotspotsByLocationBoxRequest() {}
         public APIsearchHotspotsByLocationBoxRequest swlat(float swlat) {
             this.swlat = swlat;
@@ -190,10 +189,10 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotResponse execute() throws IOException {
             String path = path()+"/location/box";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("swlat", swlat));
-            queryParams.add(new Pair("swlon", swlon));
-            queryParams.add(new Pair("nelat", nelat));
-            queryParams.add(new Pair("nelon", nelon));
+            queryParams.add(Pair.create("swlat", swlat));
+            queryParams.add(Pair.create("swlon", swlon));
+            queryParams.add(Pair.create("nelat", nelat));
+            queryParams.add(Pair.create("nelon", nelon));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -228,7 +227,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         private String filterTypes;
         private String minTime;
         private String maxTime;
-        private int limit;
+        private Integer limit;
         public APIgetHotspotRolesRequest(String address) { this.address = address; }
         public APIgetHotspotRolesRequest cursor(String cursor) {
             this.cursor = cursor;
@@ -257,11 +256,11 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotRolesResponse execute() throws IOException {
             String path = path()+"/"+address+"/roles";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
-            queryParams.add(new Pair("filter_types", filterTypes));
-            queryParams.add(new Pair("min_time", minTime));
-            queryParams.add(new Pair("max_time", maxTime));
-            queryParams.add(new Pair("limit", limit));
+            queryParams.add(Pair.create("cursor", cursor));
+            queryParams.add(Pair.create("filter_types", filterTypes));
+            queryParams.add(Pair.create("min_time", minTime));
+            queryParams.add(Pair.create("max_time", maxTime));
+            queryParams.add(Pair.create("limit", limit));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotRolesResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -286,7 +285,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotsRolesCountResponse execute() throws IOException {
             String path = path()+"/"+address+"/roles/count";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("filter_types", filterTypes));
+            queryParams.add(Pair.create("filter_types", filterTypes));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotsRolesCountResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -303,7 +302,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         private String cursor;
         private String minTime;
         private String maxTime;
-        private int limit;
+        private Integer limit;
 
         public APIgetHotspotElectionsRequest cursor(String cursor) {
             this.cursor = cursor;
@@ -327,10 +326,10 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotElectionsResponse execute() throws IOException {
             String path = path()+"/"+address+"/elections";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
-            queryParams.add(new Pair("min_time", minTime));
-            queryParams.add(new Pair("max_time", maxTime));
-            queryParams.add(new Pair("limit", limit));
+            queryParams.add(Pair.create("cursor", cursor));
+            queryParams.add(Pair.create("min_time", minTime));
+            queryParams.add(Pair.create("max_time", maxTime));
+            queryParams.add(Pair.create("limit", limit));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotElectionsResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -363,7 +362,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         private String cursor;
         private String minTime;
         private String maxTime;
-        private int limit;
+        private Integer limit;
 
         public APIgetHotspotChallangesRequest cursor(String cursor) {
             this.cursor = cursor;
@@ -387,10 +386,10 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotChallangesResponse execute() throws IOException {
             String path = path()+"/"+address+"/challenges";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
-            queryParams.add(new Pair("min_time", minTime));
-            queryParams.add(new Pair("max_time", maxTime));
-            queryParams.add(new Pair("limit", limit));
+            queryParams.add(Pair.create("cursor", cursor));
+            queryParams.add(Pair.create("min_time", minTime));
+            queryParams.add(Pair.create("max_time", maxTime));
+            queryParams.add(Pair.create("limit", limit));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotChallangesResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -427,9 +426,9 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotRewardResponse execute() throws IOException {
             String path = path()+"/"+address+"/rewards";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
-            queryParams.add(new Pair("min_time", minTime));
-            queryParams.add(new Pair("max_time", maxTime));
+            queryParams.add(Pair.create("cursor", cursor));
+            queryParams.add(Pair.create("min_time", minTime));
+            queryParams.add(Pair.create("max_time", maxTime));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotRewardResponse.class).getType();
             return HotspotApi.this.execute(call, type);
@@ -487,9 +486,9 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         public HotspotTotalRewardResponse execute() throws IOException {
             String path = path()+"/"+address+"/rewards/sum";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("min_time", minTime));
-            queryParams.add(new Pair("max_time", maxTime));
-            queryParams.add(new Pair("bucket", bucket));
+            queryParams.add(Pair.create("min_time", minTime));
+            queryParams.add(Pair.create("max_time", maxTime));
+            queryParams.add(Pair.create("bucket", bucket));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HotspotTotalRewardResponse.class).getType();
             return HotspotApi.this.execute(call, type);

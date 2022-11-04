@@ -1,7 +1,6 @@
 package mobi.appcent.helium.api;
 
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.HotspotApi;
 import okhttp3.OkHttpClient;
 
 /**

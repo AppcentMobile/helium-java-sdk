@@ -3,17 +3,13 @@ package mobi.appcent.helium.api;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
 import com.google.gson.stream.JsonReader;
-import com.sun.crypto.provider.Preconditions;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.model.ApiResponse;
 import okhttp3.Call;
 import okhttp3.Response;
-import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.reflect.Type;
-import java.util.Objects;
 
 /**
  * Base class for apis

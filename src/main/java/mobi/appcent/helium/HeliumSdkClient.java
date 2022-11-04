@@ -1,12 +1,11 @@
 package mobi.appcent.helium;
 
 import com.google.gson.Gson;
-import javafx.util.Pair;
 import mobi.appcent.helium.httpClient.HttpClient;
 import mobi.appcent.helium.httpClient.HttpMethod;
+import mobi.appcent.helium.model.Pair;
 import okhttp3.*;
 
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
@@ -58,11 +57,11 @@ public class HeliumSdkClient {
                 if (!haveQueryParams) {
                     url.append("?");
                     haveQueryParams = true;
-                }
-                url.append(pair.getKey().toString()).append("=")
-                        .append(pair.getValue().toString());
-                if (i != queryParams.size() - 1)
+                }else {
                     url.append("&");
+                }
+                url.append(pair.getKey()).append("=")
+                        .append(pair.getValue());
             }
         }
         return url.toString();

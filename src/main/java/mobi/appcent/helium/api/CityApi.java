@@ -1,11 +1,11 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
-import javafx.util.Pair;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.CitiesResponse;
 import mobi.appcent.helium.model.CityResponse;
 import mobi.appcent.helium.model.HotspotsResponse;
+import mobi.appcent.helium.model.Pair;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
@@ -51,8 +51,8 @@ public class CityApi extends BaseApi implements ICityApi{
 
         public CitiesResponse execute() throws IOException {
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("search", search));
-            queryParams.add(new Pair("cursor", cursor));
+            queryParams.add(Pair.create("search", search));
+            queryParams.add(Pair.create("cursor", cursor));
             Call call = sdkClient.buildCall(path(), HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(CitiesResponse.class).getType();
             return CityApi.this.execute(call, type);

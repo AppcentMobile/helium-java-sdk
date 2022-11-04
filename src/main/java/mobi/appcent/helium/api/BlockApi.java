@@ -1,7 +1,6 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
-import javafx.util.Pair;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import okhttp3.Call;
@@ -44,7 +43,7 @@ public class BlockApi extends BaseApi implements IBlockApi{
         public HeightResponse execute() throws IOException {
             String path = path() + "/height";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("max_time", maxTime));
+            queryParams.add(Pair.create("max_time", maxTime));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(HeightResponse.class).getType();
             return BlockApi.this.execute(call, type);
@@ -87,7 +86,7 @@ public class BlockApi extends BaseApi implements IBlockApi{
 
         public BlockDescriptionsResponse execute() throws IOException {
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
+            queryParams.add(Pair.create("cursor", cursor));
             Call call = sdkClient.buildCall(path(), HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(BlockDescriptionsResponse.class).getType();
             return BlockApi.this.execute(call, type);
@@ -137,7 +136,7 @@ public class BlockApi extends BaseApi implements IBlockApi{
         public BlockTransactionsResponse execute() throws IOException {
             String path = path() + "/" + height + "/transactions";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
+            queryParams.add(Pair.create("cursor", cursor));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(BlockTransactionsResponse.class).getType();
             return BlockApi.this.execute(call, type);
@@ -187,7 +186,7 @@ public class BlockApi extends BaseApi implements IBlockApi{
         public BlockTransactionsResponse execute() throws IOException {
             String path = path() + "/hash/" + hash + "/transactions";
             ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(new Pair("cursor", cursor));
+            queryParams.add(Pair.create("cursor", cursor));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
             Type type = TypeToken.get(BlockTransactionsResponse.class).getType();
             return BlockApi.this.execute(call, type);

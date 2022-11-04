@@ -1,6 +1,5 @@
 package mobi.appcent.helium.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
