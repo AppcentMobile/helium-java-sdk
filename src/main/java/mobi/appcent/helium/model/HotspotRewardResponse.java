@@ -7,4 +7,17 @@ import java.util.List;
  */
 public class HotspotRewardResponse {
     private List<Reward> data;
+    private String cursor;
+
+    public HotspotRewardResponse(List<Reward> data, String cursor) {
+        this.data = data;
+        this.cursor = cursor;
+    }
+
+    public List<Reward> getData() {
+        return data;
+    }
+    public String getCursor() {
+        return cursor;
+    }
 }
