@@ -13,7 +13,7 @@ import java.util.Collections;
 /**
  * Created by erenalpaslan on 5.11.2022
  */
-public class AccountApi extends BaseApi implements IAccountsApi{
+public class AccountApi extends BaseApi implements IAccountsApi {
 
     public static AccountApi getInstance() {
         return new AccountApi();
@@ -32,7 +32,8 @@ public class AccountApi extends BaseApi implements IAccountsApi{
     public class APIgetAccountsRequest {
         private String cursor;
 
-        private APIgetAccountsRequest() {}
+        private APIgetAccountsRequest() {
+        }
 
         public APIgetAccountsRequest cursor(String cursor) {
             this.cursor = cursor;
@@ -57,7 +58,8 @@ public class AccountApi extends BaseApi implements IAccountsApi{
 
         private String limit;
 
-        private APIgetRichestAccountsRequest() {}
+        private APIgetRichestAccountsRequest() {
+        }
 
         public AccountsResponse execute() throws IOException {
             String path = path() + "/rich";
@@ -243,7 +245,7 @@ public class AccountApi extends BaseApi implements IAccountsApi{
         return new APIgetElectionsForAccountRequest(address);
     }
 
-    public class APIgetElectionsForAccountRequest{
+    public class APIgetElectionsForAccountRequest {
         private final String address;
         private String minTime;
         private String maxTime;
@@ -285,7 +287,7 @@ public class AccountApi extends BaseApi implements IAccountsApi{
         return new APIgetChallengesForAccountRequest(address);
     }
 
-    public class APIgetChallengesForAccountRequest{
+    public class APIgetChallengesForAccountRequest {
         private final String address;
         private String minTime;
         private String maxTime;
@@ -329,7 +331,7 @@ public class AccountApi extends BaseApi implements IAccountsApi{
         return new APIgetPendingTransactionsForAccountRequest(address);
     }
 
-    public class APIgetPendingTransactionsForAccountRequest{
+    public class APIgetPendingTransactionsForAccountRequest {
         private final String address;
         private String cursor;
 
@@ -355,23 +357,19 @@ public class AccountApi extends BaseApi implements IAccountsApi{
     }
 
     @Override
-    public APIgetRewardsForAccountRequest getRewardsForAccount(String address) throws IOException {
-        return new APIgetRewardsForAccountRequest(address);
+    public APIgetRewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException {
+        return new APIgetRewardsForAccountRequest(address, minTime);
     }
 
     public class APIgetRewardsForAccountRequest {
         private final String address;
-        private String minTime;
+        private final String minTime;
         private String maxTime;
         private String cursor;
 
-        public APIgetRewardsForAccountRequest(String address) {
+        public APIgetRewardsForAccountRequest(String address, String minTime) {
             this.address = address;
-        }
-
-        public APIgetRewardsForAccountRequest minTime(String minTime) {
             this.minTime = minTime;
-            return this;
         }
 
         public APIgetRewardsForAccountRequest maxTime(String maxTime) {
@@ -397,8 +395,8 @@ public class AccountApi extends BaseApi implements IAccountsApi{
     }
 
     @Override
-    public String getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
-        return null;
+    public APIgetRewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
+        return new APIgetRewardsByRewardsBlockForAccountRequest(address, block);
     }
 
     public class APIgetRewardsByRewardsBlockForAccountRequest {
@@ -419,32 +417,24 @@ public class AccountApi extends BaseApi implements IAccountsApi{
     }
 
     @Override
-    public String getRewardTotalsForAccount(String address) throws IOException {
-        return null;
+    public APIgetRewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime, String maxTime) throws IOException {
+        return new APIgetRewardTotalsForAccountRequest(address, minTime, maxTime);
     }
 
     public class APIgetRewardTotalsForAccountRequest {
         private final String address;
-        private String minTime;
-        private String maxTime;
+        private final String minTime;
+        private final String maxTime;
         private String bucket;
 
-        private APIgetRewardTotalsForAccountRequest(String address) {
+        private APIgetRewardTotalsForAccountRequest(String address, String minTime, String maxTime) {
             this.address = address;
-        }
-
-        public APIgetRewardTotalsForAccountRequest maxTime(String maxTime) {
+            this.minTime = minTime;
             this.maxTime = maxTime;
-            return this;
         }
 
         public APIgetRewardTotalsForAccountRequest bucket(String bucket) {
             this.bucket = bucket;
-            return this;
-        }
-
-        public APIgetRewardTotalsForAccountRequest minTime(String minTime) {
-            this.minTime = minTime;
             return this;
         }
 

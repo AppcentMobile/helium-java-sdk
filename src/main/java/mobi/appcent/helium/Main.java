@@ -8,13 +8,12 @@ public class Main {
     public static void main(String[] args) {
         try {
             HeliumApi heliumApi = new HeliumApi();
-            HotspotRewardResponse resp = heliumApi.accounts()
-                    .getRewardsForAccount("13W1uxU6hgWpra3FQjUp8vvTimd3VgJrvLeGQh49TQfXFBCKjnC")
-                    .minTime("2020-08-27")
-                    .maxTime("2020-08-28")
+            HotspotTotalRewardResponse resp = heliumApi.accounts()
+                    .getRewardTotalsForAccount("13W1uxU6hgWpra3FQjUp8vvTimd3VgJrvLeGQh49TQfXFBCKjnC", "2020-08-27", "2020-08-28")
+                    .bucket("day")
                     .execute();
 
-            System.out.println(resp.getData().get(0).amount);
+            System.out.println(resp.getData().getSum());
             /*for (Role a: resp.getData()) {
                 System.out.println(a.getRole());
             }*/

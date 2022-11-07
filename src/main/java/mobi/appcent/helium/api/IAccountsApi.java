@@ -17,8 +17,8 @@ public interface IAccountsApi {
     AccountApi.APIgetElectionsForAccountRequest getElectionsForAccount(String address) throws IOException;
     AccountApi.APIgetChallengesForAccountRequest getChallengesForAccount(String address) throws IOException;
     AccountApi.APIgetPendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException;
-    AccountApi.APIgetRewardsForAccountRequest getRewardsForAccount(String address) throws IOException;
-    String getRewardsByRewardsBlockForAccount(String address, String block) throws IOException;
-    String getRewardTotalsForAccount(String address) throws IOException;
+    AccountApi.APIgetRewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException;
+    AccountApi.APIgetRewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException;
+    AccountApi.APIgetRewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime, String maxTime) throws IOException;
     String getStatsForAccount(String address) throws IOException;
 }
