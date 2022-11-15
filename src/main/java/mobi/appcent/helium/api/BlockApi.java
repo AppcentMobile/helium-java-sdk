@@ -3,6 +3,7 @@ package mobi.appcent.helium.api;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.response.block.*;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
@@ -40,12 +41,12 @@ public class BlockApi extends BaseApi implements IBlockApi{
             return this;
         }
 
-        public HeightResponse execute() throws IOException {
+        public BlockHeightResponse execute() throws IOException {
             String path = path() + "/height";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("max_time", maxTime));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HeightResponse.class).getType();
+            Type type = TypeToken.get(BlockHeightResponse.class).getType();
             return BlockApi.this.execute(call, type);
         }
     }
