@@ -11,12 +11,12 @@ import lombok.Data;
 @AllArgsConstructor
 public class BlockDescription {
     @SerializedName("transaction_count")
-    public int transaction_count;
+    public Integer transaction_count;
     public String time;
     @SerializedName("snapshot_hash")
     public String snapshot_hash;
     @SerializedName("prev_hash")
     public String prev_hash;
-    public int height;
+    public Integer height;
     public String hash;
 }

@@ -9,6 +9,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class ChallengeCounts {
-    public int active;
-    public int last_day;
+    public Integer active;
+    public Integer last_day;
 }

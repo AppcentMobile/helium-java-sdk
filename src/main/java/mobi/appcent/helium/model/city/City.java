@@ -13,7 +13,7 @@ public class City {
     @SerializedName("city_id")
     public String cityId;
     @SerializedName("hotspot_count")
-    public int hotspotCount;
+    public Integer hotspotCount;
     @SerializedName("long_city")
     public String longCity;
     @SerializedName("long_country")

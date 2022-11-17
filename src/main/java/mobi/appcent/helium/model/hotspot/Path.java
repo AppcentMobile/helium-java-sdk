@@ -18,10 +18,10 @@ public class Path {
     @SerializedName("challengee_owner")
     private String challangeeOwner;
     @SerializedName("challengee_lon")
-    private float challangeeLon;
+    private Float challangeeLon;
     @SerializedName("challengee_location")
     private String challangeeLocation;
     @SerializedName("challengee_lat")
-    private float challangeeLat;
+    private Float challangeeLat;
     private String challangee;
 }

@@ -11,5 +11,5 @@ import lombok.Data;
 @AllArgsConstructor
 public class TokenSupply {
     @SerializedName("token_supply")
-    public double tokenSupply;
+    public Double tokenSupply;
 }

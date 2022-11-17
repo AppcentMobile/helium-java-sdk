@@ -9,9 +9,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Election {
-    private int delay;
+    private Integer delay;
     private String hash;
-    private int height;
+    private Integer height;
     private String[] members;
     private String proof;
     private String time;

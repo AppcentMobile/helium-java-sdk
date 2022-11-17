@@ -10,8 +10,8 @@ import lombok.Data;
 @AllArgsConstructor
 public class Reward {
     private String account;
-    private int amount;
-    private int block;
+    private Integer amount;
+    private Integer block;
     private String gateway;
     private String hash;
     private String timestamp;

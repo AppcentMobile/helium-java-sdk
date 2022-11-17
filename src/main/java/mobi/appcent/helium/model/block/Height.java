@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Height {
-    public int height;
+    public Integer height;
 }

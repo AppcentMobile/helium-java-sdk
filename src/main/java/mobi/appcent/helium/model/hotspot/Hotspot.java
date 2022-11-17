@@ -8,35 +8,35 @@ import lombok.Data;
 @AllArgsConstructor
 public class Hotspot {
     @SerializedName(value = "score_update_height")
-    private int scoreUpdateHeight;
-    private int score;
+    private Integer scoreUpdateHeight;
+    private Integer score;
     private String owner;
     private String name;
-    private int nonce;
+    private Integer nonce;
     @SerializedName(value = "reward_scale")
-    private float rewardScale;
+    private Float rewardScale;
     private String payer;
     private String location;
     @SerializedName(value = "location_hex")
     private String locationHex;
-    private float lng;
-    private float lat;
-    private long block;
+    private Float lng;
+    private Float lat;
+    private Long block;
     private Geocode geocode;
     private String address;
     private Status status;
     @SerializedName(value = "speculative_nonce")
-    private int speculativeNonce;
+    private Integer speculativeNonce;
     @SerializedName(value = "block_added")
-    private long blockAdded;
+    private Long blockAdded;
     @SerializedName(value = "timestamp_added")
     private String timestampAdded;
     @SerializedName(value = "last_poc_challenge")
-    private int lastPocChallenge;
+    private Integer lastPocChallenge;
     @SerializedName(value = "last_change_block")
-    private int lastChangeBlock;
-    private int gain;
-    private int elevation;
+    private Integer lastChangeBlock;
+    private Integer gain;
+    private Integer elevation;
     private String mode;
 }
 

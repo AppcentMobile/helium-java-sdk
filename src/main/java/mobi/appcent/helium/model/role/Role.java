@@ -12,6 +12,6 @@ public class Role {
     private String type;
     private String time;
     private String role;
-    private int height;
+    private Integer height;
     private String hash;
 }

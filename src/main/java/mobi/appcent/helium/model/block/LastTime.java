@@ -9,6 +9,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class LastTime{
-    public double avg;
-    public double stddev;
+    public Double avg;
+    public Double stddev;
 }

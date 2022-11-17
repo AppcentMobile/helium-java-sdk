@@ -18,16 +18,16 @@ public class Challenge {
     private List<Path> path;
     @SerializedName("onion_key_hash")
     private String onionKeyHash;
-    private int height;
+    private Integer height;
     private String hash;
-    private int fee;
+    private Integer fee;
     @SerializedName("challenger_owner")
     private String challangerOwner;
     @SerializedName("challanger_lon")
-    private float challangerLon;
+    private Float challangerLon;
     @SerializedName("challanger_location")
     private String challangerLocation;
     @SerializedName("challanger_lat")
-    private float challangerLat;
+    private Float challangerLat;
     private String challanger;
 }

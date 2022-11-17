@@ -10,7 +10,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Receipt {
     private String timestamp;
-    private int signal;
+    private Integer signal;
     private String origin;
     private String gateway;
     private String data;

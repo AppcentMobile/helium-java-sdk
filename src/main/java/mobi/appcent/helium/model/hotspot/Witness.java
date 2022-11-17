@@ -11,7 +11,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Witness {
     private String timestamp;
-    private int signal;
+    private Integer signal;
     @SerializedName("packet_hash")
     private String packetHash;
     private String owner;

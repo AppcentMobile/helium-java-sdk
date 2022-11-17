@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class BlockTransaction {
-    public int version;
+    public Integer version;
     public String type;
     public String time;
     public String signature;
@@ -20,11 +20,11 @@ public class BlockTransaction {
     @SerializedName("onion_key_hash")
     public String onionKeyHash;
     public String location;
-    public double lng;
-    public double lat;
-    public int height;
+    public Double lng;
+    public Double lat;
+    public Integer height;
     public String hash;
-    public int fee;
+    public Integer fee;
     public String challenger;
     @SerializedName("block_hash")
     public String blockHash;

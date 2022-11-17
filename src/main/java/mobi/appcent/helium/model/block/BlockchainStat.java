@@ -18,5 +18,5 @@ public class BlockchainStat{
     @SerializedName("election_times")
     public BlockTimes electionTimes;
     @SerializedName("token_supply")
-    public double tokenSupply;
+    public Double tokenSupply;
 }

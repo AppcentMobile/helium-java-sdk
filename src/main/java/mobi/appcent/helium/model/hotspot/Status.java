@@ -7,7 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Status {
     private String timestamp;
-    private int height;
+    private Integer height;
     private String online;
     private String[] listenAddrs;
 }

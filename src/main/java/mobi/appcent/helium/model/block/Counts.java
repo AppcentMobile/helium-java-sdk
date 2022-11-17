@@ -10,16 +10,16 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Counts{
-    public int validators;
-    public int ouis;
+    public Integer validators;
+    public Integer ouis;
     @SerializedName("hotspots_dataonly")
-    public int hotspotsDataonly;
-    public int blocks;
-    public int challenges;
-    public int cities;
+    public Integer hotspotsDataonly;
+    public Integer blocks;
+    public Integer challenges;
+    public Integer cities;
     @SerializedName("consensus_groups")
-    public int consensusGroups;
-    public int countries;
-    public int hotspots;
-    public int transactions;
+    public Integer consensusGroups;
+    public Integer countries;
+    public Integer hotspots;
+    public Integer transactions;
 }
