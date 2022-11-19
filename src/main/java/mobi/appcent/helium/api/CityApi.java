@@ -2,9 +2,9 @@ package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.CitiesResponse;
-import mobi.appcent.helium.model.CityResponse;
-import mobi.appcent.helium.model.HotspotsResponse;
+import mobi.appcent.helium.response.city.CitiesResponse;
+import mobi.appcent.helium.response.city.CityResponse;
+import mobi.appcent.helium.response.hotspot.HotspotsResponse;
 import mobi.appcent.helium.model.Pair;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
