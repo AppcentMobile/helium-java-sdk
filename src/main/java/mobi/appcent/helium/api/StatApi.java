@@ -2,9 +2,9 @@ package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.BlockchainStatsResponse;
+import mobi.appcent.helium.response.block.BlockchainStatsResponse;
 import mobi.appcent.helium.model.Pair;
-import mobi.appcent.helium.model.TokenSupplyResponse;
+import mobi.appcent.helium.response.stat.TokenSupplyResponse;
 import okhttp3.Call;
 
 import java.io.IOException;
