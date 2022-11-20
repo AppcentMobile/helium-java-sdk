@@ -1,10 +1,14 @@
-package mobi.appcent.helium.model;
+package mobi.appcent.helium.model.account;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 /**
  * Created by erenalpaslan on 5.11.2022
  */
+@Data
+@AllArgsConstructor
 public class AccountRolesCount {
     @SerializedName("gen_validator_v1")
     public Integer genValidatorV1;
@@ -78,6 +82,4 @@ public class AccountRolesCount {
     public Integer unstakeValidatorV1;
     @SerializedName("routing_v1")
     public Integer routingV1;
-
-
 }

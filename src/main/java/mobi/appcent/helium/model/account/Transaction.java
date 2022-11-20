@@ -1,10 +1,15 @@
-package mobi.appcent.helium.model;
+package mobi.appcent.helium.model.account;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import mobi.appcent.helium.model.account.Txn;
 
 /**
  * Created by erenalpaslan on 5.11.2022
  */
+@Data
+@AllArgsConstructor
 public class Transaction {
     @SerializedName("updated_at")
     public String updatedAt;

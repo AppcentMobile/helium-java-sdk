@@ -3,6 +3,10 @@ package mobi.appcent.helium.api;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.response.account.*;
+import mobi.appcent.helium.response.hotspot.*;
+import mobi.appcent.helium.response.ouis.OuisResponse;
+import mobi.appcent.helium.response.validator.ValidatorsResponse;
 import okhttp3.Call;
 
 import java.io.IOException;
@@ -24,18 +28,19 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         return BASE_URL + "/accounts";
     }
 
+    //region getAccounts
     @Override
-    public APIgetAccountsRequest getAccounts() throws IOException {
-        return new APIgetAccountsRequest();
+    public AccountsRequest getAccounts() throws IOException {
+        return new AccountsRequest();
     }
 
-    public class APIgetAccountsRequest {
+    public class AccountsRequest {
         private String cursor;
 
-        private APIgetAccountsRequest() {
+        private AccountsRequest() {
         }
 
-        public APIgetAccountsRequest cursor(String cursor) {
+        public AccountsRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
@@ -48,17 +53,19 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getRichestAccounts
     @Override
-    public APIgetRichestAccountsRequest getRichestAccounts() throws IOException {
-        return new APIgetRichestAccountsRequest();
+    public RichestAccountsRequest getRichestAccounts() throws IOException {
+        return new RichestAccountsRequest();
     }
 
-    public class APIgetRichestAccountsRequest {
+    public class RichestAccountsRequest {
 
         private String limit;
 
-        private APIgetRichestAccountsRequest() {
+        private RichestAccountsRequest() {
         }
 
         public AccountsResponse execute() throws IOException {
@@ -71,16 +78,18 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         }
 
     }
+    //endregion
 
+    //region getAccountForAddress
     @Override
-    public APIgetAccountForAddressRequest getAccountForAddress(String address) throws IOException {
-        return new APIgetAccountForAddressRequest(address);
+    public AccountForAddressRequest getAccountForAddress(String address) throws IOException {
+        return new AccountForAddressRequest(address);
     }
 
-    public class APIgetAccountForAddressRequest {
+    public class AccountForAddressRequest {
         private final String address;
 
-        private APIgetAccountForAddressRequest(String address) {
+        private AccountForAddressRequest(String address) {
             this.address = address;
         }
 
@@ -91,27 +100,29 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getHotspotsForAccount
     @Override
-    public APIgetHotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException {
-        return new APIgetHotspotsForAccountRequest(address);
+    public HotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException {
+        return new HotspotsForAccountRequest(address);
     }
 
-    public class APIgetHotspotsForAccountRequest {
+    public class HotspotsForAccountRequest {
         private final String address;
         private String cursor;
         private String filterModes;
 
-        public APIgetHotspotsForAccountRequest(String address) {
+        public HotspotsForAccountRequest(String address) {
             this.address = address;
         }
 
-        public APIgetHotspotsForAccountRequest cursor(String cursor) {
+        public HotspotsForAccountRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
 
-        public APIgetHotspotsForAccountRequest filterModes(String filterModes) {
+        public HotspotsForAccountRequest filterModes(String filterModes) {
             this.filterModes = filterModes;
             return this;
         }
@@ -127,27 +138,53 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         }
 
     }
+    //endregion
 
-    //TODO: adds response with validator api
+    //region getValidatorsForAccount
     @Override
-    public String getValidatorsForAccount(String address) throws IOException {
-        return null;
+    public ValidatorsForAccountRequest getValidatorsForAccount(String address) throws IOException {
+        return new ValidatorsForAccountRequest(address);
     }
 
-    @Override
-    public APIgetOUIsForAccountRequest getOUIsForAccount(String address) throws IOException {
-        return new APIgetOUIsForAccountRequest(address);
-    }
-
-    public class APIgetOUIsForAccountRequest {
+    public class ValidatorsForAccountRequest {
         private final String address;
         private String cursor;
 
-        private APIgetOUIsForAccountRequest(String address) {
+        private ValidatorsForAccountRequest(String address) {
             this.address = address;
         }
 
-        public APIgetOUIsForAccountRequest cursor(String cursor) {
+        public ValidatorsForAccountRequest cursor(String cursor) {
+            this.cursor = cursor;
+            return this;
+        }
+
+        public ValidatorsResponse execute() throws IOException {
+            String path = path() + "/" + address + "/validators";
+            ArrayList<Pair> queryParams = new ArrayList<>();
+            queryParams.add(Pair.create("cursor", cursor));
+            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
+            Type type = TypeToken.get(ValidatorsResponse.class).getType();
+            return AccountApi.this.execute(call, type);
+        }
+    }
+    //endregion
+
+    //region getOUIsForAccount
+    @Override
+    public OUIsForAccountRequest getOUIsForAccount(String address) throws IOException {
+        return new OUIsForAccountRequest(address);
+    }
+
+    public class OUIsForAccountRequest {
+        private final String address;
+        private String cursor;
+
+        private OUIsForAccountRequest(String address) {
+            this.address = address;
+        }
+
+        public OUIsForAccountRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
@@ -161,39 +198,41 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getRolesForAccount
     @Override
-    public APIgetRolesForAccountRequest getRolesForAccount(String address) throws IOException {
-        return new APIgetRolesForAccountRequest(address);
+    public RolesForAccountRequest getRolesForAccount(String address) throws IOException {
+        return new RolesForAccountRequest(address);
     }
 
-    public class APIgetRolesForAccountRequest {
+    public class RolesForAccountRequest {
         private final String address;
         private String filterTypes;
         private String minTime;
         private String maxTime;
         private String limit;
 
-        public APIgetRolesForAccountRequest(String address) {
+        public RolesForAccountRequest(String address) {
             this.address = address;
         }
 
-        public APIgetRolesForAccountRequest filterTypes(String filterTypes) {
+        public RolesForAccountRequest filterTypes(String filterTypes) {
             this.filterTypes = filterTypes;
             return this;
         }
 
-        public APIgetRolesForAccountRequest minTime(String minTime) {
+        public RolesForAccountRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
 
-        public APIgetRolesForAccountRequest maxTime(String maxTime) {
+        public RolesForAccountRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetRolesForAccountRequest limit(String limit) {
+        public RolesForAccountRequest limit(String limit) {
             this.limit = limit;
             return this;
         }
@@ -211,21 +250,23 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         }
 
     }
+    //endregion
 
+    //region getRolesCountsForAccount
     @Override
-    public APIgetRolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException {
-        return new APIgetRolesCountsForAccountRequest(address);
+    public RolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException {
+        return new RolesCountsForAccountRequest(address);
     }
 
-    public class APIgetRolesCountsForAccountRequest {
+    public class RolesCountsForAccountRequest {
         private final String address;
         private String filterTypes;
 
-        public APIgetRolesCountsForAccountRequest(String address) {
+        public RolesCountsForAccountRequest(String address) {
             this.address = address;
         }
 
-        public APIgetRolesCountsForAccountRequest filterTypes(String filterTypes) {
+        public RolesCountsForAccountRequest filterTypes(String filterTypes) {
             this.filterTypes = filterTypes;
             return this;
         }
@@ -239,33 +280,35 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getElectionsForAccount
     @Override
-    public APIgetElectionsForAccountRequest getElectionsForAccount(String address) throws IOException {
-        return new APIgetElectionsForAccountRequest(address);
+    public ElectionsForAccountRequest getElectionsForAccount(String address) throws IOException {
+        return new ElectionsForAccountRequest(address);
     }
 
-    public class APIgetElectionsForAccountRequest {
+    public class ElectionsForAccountRequest {
         private final String address;
         private String minTime;
         private String maxTime;
         private String limit;
 
-        public APIgetElectionsForAccountRequest(String address) {
+        public ElectionsForAccountRequest(String address) {
             this.address = address;
         }
 
-        public APIgetElectionsForAccountRequest minTime(String minTime) {
+        public ElectionsForAccountRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
 
-        public APIgetElectionsForAccountRequest maxTime(String maxTime) {
+        public ElectionsForAccountRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetElectionsForAccountRequest limit(String limit) {
+        public ElectionsForAccountRequest limit(String limit) {
             this.limit = limit;
             return this;
         }
@@ -281,34 +324,36 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getChallengesForAccount
     @Override
-    public APIgetChallengesForAccountRequest getChallengesForAccount(String address) throws IOException {
-        return new APIgetChallengesForAccountRequest(address);
+    public ChallengesForAccountRequest getChallengesForAccount(String address) throws IOException {
+        return new ChallengesForAccountRequest(address);
     }
 
-    public class APIgetChallengesForAccountRequest {
+    public class ChallengesForAccountRequest {
         private final String address;
         private String minTime;
         private String maxTime;
         private String limit;
 
-        public APIgetChallengesForAccountRequest(String address) {
+        public ChallengesForAccountRequest(String address) {
             this.address = address;
         }
 
 
-        public APIgetChallengesForAccountRequest minTime(String minTime) {
+        public ChallengesForAccountRequest minTime(String minTime) {
             this.minTime = minTime;
             return this;
         }
 
-        public APIgetChallengesForAccountRequest maxTime(String maxTime) {
+        public ChallengesForAccountRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetChallengesForAccountRequest limit(String limit) {
+        public ChallengesForAccountRequest limit(String limit) {
             this.limit = limit;
             return this;
         }
@@ -325,22 +370,24 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         }
 
     }
+    //endregion
 
+    //region getPendingTransactionsForAccount
     @Override
-    public APIgetPendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException {
-        return new APIgetPendingTransactionsForAccountRequest(address);
+    public PendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException {
+        return new PendingTransactionsForAccountRequest(address);
     }
 
-    public class APIgetPendingTransactionsForAccountRequest {
+    public class PendingTransactionsForAccountRequest {
         private final String address;
         private String cursor;
 
-        public APIgetPendingTransactionsForAccountRequest(String address) {
+        public PendingTransactionsForAccountRequest(String address) {
             this.address = address;
         }
 
 
-        public APIgetPendingTransactionsForAccountRequest cursor(String cursor) {
+        public PendingTransactionsForAccountRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
@@ -355,29 +402,31 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         }
 
     }
+    //endregion
 
+    //region getRewardsForAccount
     @Override
-    public APIgetRewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException {
-        return new APIgetRewardsForAccountRequest(address, minTime);
+    public RewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException {
+        return new RewardsForAccountRequest(address, minTime);
     }
 
-    public class APIgetRewardsForAccountRequest {
+    public class RewardsForAccountRequest {
         private final String address;
         private final String minTime;
         private String maxTime;
         private String cursor;
 
-        public APIgetRewardsForAccountRequest(String address, String minTime) {
+        public RewardsForAccountRequest(String address, String minTime) {
             this.address = address;
             this.minTime = minTime;
         }
 
-        public APIgetRewardsForAccountRequest maxTime(String maxTime) {
+        public RewardsForAccountRequest maxTime(String maxTime) {
             this.maxTime = maxTime;
             return this;
         }
 
-        public APIgetRewardsForAccountRequest cursor(String cursor) {
+        public RewardsForAccountRequest cursor(String cursor) {
             this.cursor = cursor;
             return this;
         }
@@ -393,17 +442,19 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getRewardsByRewardsBlockForAccount
     @Override
-    public APIgetRewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
-        return new APIgetRewardsByRewardsBlockForAccountRequest(address, block);
+    public RewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
+        return new RewardsByRewardsBlockForAccountRequest(address, block);
     }
 
-    public class APIgetRewardsByRewardsBlockForAccountRequest {
+    public class RewardsByRewardsBlockForAccountRequest {
         private final String address;
         private final String block;
 
-        private APIgetRewardsByRewardsBlockForAccountRequest(String address, String block) {
+        private RewardsByRewardsBlockForAccountRequest(String address, String block) {
             this.address = address;
             this.block = block;
         }
@@ -415,44 +466,50 @@ public class AccountApi extends BaseApi implements IAccountsApi {
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
+    //region getRewardTotalsForAccount
     @Override
-    public APIgetRewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime, String maxTime) throws IOException {
-        return new APIgetRewardTotalsForAccountRequest(address, minTime, maxTime);
+    public RewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime) throws IOException {
+        return new RewardTotalsForAccountRequest(address, minTime);
     }
 
-    public class APIgetRewardTotalsForAccountRequest {
+    public class RewardTotalsForAccountRequest {
         private final String address;
         private final String minTime;
-        private final String maxTime;
+        private String maxTime;
         private String bucket;
 
-        private APIgetRewardTotalsForAccountRequest(String address, String minTime, String maxTime) {
+        private RewardTotalsForAccountRequest(String address, String minTime) {
             this.address = address;
             this.minTime = minTime;
-            this.maxTime = maxTime;
         }
 
-        public APIgetRewardTotalsForAccountRequest bucket(String bucket) {
+        public RewardTotalsForAccountRequest bucket(String bucket) {
             this.bucket = bucket;
             return this;
         }
 
-        public HotspotTotalRewardResponse execute() throws IOException {
+        public RewardTotalsForAccountRequest maxTime(String maxTime) {
+            this.maxTime = maxTime;
+            return this;
+        }
+
+        public AccountTotalRewardsResponse execute() throws IOException {
             String path = path() + "/" + address + "/rewards/sum";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("bucket", bucket));
             queryParams.add(Pair.create("max_time", maxTime));
             queryParams.add(Pair.create("min_time", minTime));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotTotalRewardResponse.class).getType();
+            Type type = TypeToken.get(AccountTotalRewardsResponse.class).getType();
             return AccountApi.this.execute(call, type);
         }
     }
+    //endregion
 
-    //TODO 500 response
-    @Override
-    public String getStatsForAccount(String address) throws IOException {
+    //TODO: 500 response
+    private String getStatsForAccount(String address) throws IOException {
         return null;
     }
 }
