@@ -12,6 +12,7 @@ public class HeliumApi {
     private final CityApi cityApi = CityApi.getInstance();
 
     private final BlockApi blockApi = BlockApi.getInstance();
+    private final PendingTransactionsApi pendingTransactionsApi = PendingTransactionsApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -28,6 +29,7 @@ public class HeliumApi {
         statApi.setSdkClient(sdkClient);
         cityApi.setSdkClient(sdkClient);
         blockApi.setSdkClient(sdkClient);
+        pendingTransactionsApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
@@ -43,4 +45,6 @@ public class HeliumApi {
     }
 
     public BlockApi blocks() { return blockApi; }
+
+    public PendingTransactionsApi pendingTransactions() { return pendingTransactionsApi; }
 }
