@@ -13,10 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Txn {
     @SerializedName("payment_v2")
-    public String paymentV2;
-    public List<Payment> payments;
-    public String payer;
-    public Integer nonce;
-    public String hash;
-    public Integer fee;
+    private String paymentV2;
+    private List<Payment> payments;
+    private String payer;
+    private Integer nonce;
+    private String hash;
+    private Integer fee;
 }

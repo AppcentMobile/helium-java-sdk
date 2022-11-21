@@ -10,5 +10,5 @@ import mobi.appcent.helium.model.account.Account;
 @Data
 @AllArgsConstructor
 public class AccountResponse {
-    public Account data;
+    private Account data;
 }

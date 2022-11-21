@@ -11,10 +11,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Ouis {
-    public List<Subnet> subnets;
-    public String owner;
-    public Integer nonce;
-    public Integer oui;
-    public Integer block;
-    public List<String> addresses;
+    private List<Subnet> subnets;
+    private String owner;
+    private Integer nonce;
+    private Integer oui;
+    private Integer block;
+    private List<String> addresses;
 }

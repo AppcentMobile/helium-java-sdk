@@ -13,11 +13,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ValidatorStatus {
-    public String timestamp;
-    public String online;
+    private String timestamp;
+    private String online;
     @SerializedName("listen_addrs")
-    public List<String> listenAddrs;
-    public BigInteger height;
+    private List<String> listenAddrs;
+    private BigInteger height;
     @SerializedName("grpc_addr")
-    public String grpcAddr;
+    private String grpcAddr;
 }

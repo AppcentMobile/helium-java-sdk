@@ -9,6 +9,6 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Subnet {
-    public Integer mask;
-    public Integer base;
+    private Integer mask;
+    private Integer base;
 }

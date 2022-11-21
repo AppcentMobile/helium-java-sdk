@@ -11,12 +11,12 @@ import java.math.BigInteger;
 @Data
 @AllArgsConstructor
 public class AccountTotalReward {
-    public String total;
-    public String timestamp;
-    public BigInteger sum;
-    public Double stddev;
-    public Double min;
-    public Double median;
-    public Double max;
-    public Double avg;
+    private String total;
+    private String timestamp;
+    private BigInteger sum;
+    private Double stddev;
+    private Double min;
+    private Double median;
+    private Double max;
+    private Double avg;
 }

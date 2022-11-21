@@ -12,6 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class HotspotRewardResponse {
-    public List<Reward> data;
-    public String cursor;
+    private List<Reward> data;
+    private String cursor;
 }

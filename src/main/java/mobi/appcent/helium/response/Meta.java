@@ -11,9 +11,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class Meta {
     @SerializedName("min_time")
-    public String minTime;
+    private String minTime;
     @SerializedName("max_time")
-    public String maxTime;
+    private String maxTime;
     @SerializedName("bucket")
-    public String bucket;
+    private String bucket;
 }

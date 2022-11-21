@@ -13,6 +13,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class AccountTotalRewardsResponse {
-    public List<AccountTotalReward> data;
-    public Meta meta;
+    private List<AccountTotalReward> data;
+    private Meta meta;
 }

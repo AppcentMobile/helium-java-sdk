@@ -10,5 +10,5 @@ import mobi.appcent.helium.model.account.AccountRolesCount;
 @Data
 @AllArgsConstructor
 public class AccountRolesCountResponse {
-    public AccountRolesCount data;
+    private AccountRolesCount data;
 }

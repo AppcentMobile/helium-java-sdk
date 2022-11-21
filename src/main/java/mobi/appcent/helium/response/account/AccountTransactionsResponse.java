@@ -12,6 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class AccountTransactionsResponse {
-    public List<Transaction> data;
-    public String cursor;
+    private List<Transaction> data;
+    private String cursor;
 }

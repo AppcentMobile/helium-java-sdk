@@ -10,5 +10,5 @@ import mobi.appcent.helium.model.ouis.Ouis;
 @Data
 @AllArgsConstructor
 public class OuisResponse {
-    public Ouis data;
+    private Ouis data;
 }

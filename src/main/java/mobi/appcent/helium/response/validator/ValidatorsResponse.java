@@ -12,6 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class ValidatorsResponse {
-    public List<Validator> data;
-    public String cursor;
+    private List<Validator> data;
+    private String cursor;
 }

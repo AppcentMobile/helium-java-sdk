@@ -13,28 +13,28 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class Account {
     @SerializedName("validator_count")
-    public Integer validatorCount;
+    private Integer validatorCount;
     @SerializedName("staked_balance")
-    public BigInteger stakedBalance;
+    private BigInteger stakedBalance;
     @SerializedName("speculative_sec_nonce")
-    public Integer speculativeSecNonce;
+    private Integer speculativeSecNonce;
     @SerializedName("speculative_nonce")
-    public Integer speculativeNonce;
+    private Integer speculativeNonce;
     @SerializedName("sec_nonce")
-    public Integer secNonce;
+    private Integer secNonce;
     @SerializedName("sec_balance")
-    public BigInteger secBalance;
+    private BigInteger secBalance;
     @SerializedName("nonce")
-    public Integer nonce;
+    private Integer nonce;
     @SerializedName("mobile_balance")
-    public BigInteger mobileBalance;
+    private BigInteger mobileBalance;
     @SerializedName("iot_balance")
-    public BigInteger iotBalance;
+    private BigInteger iotBalance;
     @SerializedName("dc_nonce")
-    public Integer dcNonce;
+    private Integer dcNonce;
     @SerializedName("dc_balance")
-    public BigInteger dcBalance;
-    public Integer block;
-    public BigInteger balance;
-    public String address;
+    private BigInteger dcBalance;
+    private Integer block;
+    private BigInteger balance;
+    private String address;
 }

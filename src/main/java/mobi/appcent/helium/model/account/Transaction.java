@@ -12,13 +12,13 @@ import mobi.appcent.helium.model.account.Txn;
 @AllArgsConstructor
 public class Transaction {
     @SerializedName("updated_at")
-    public String updatedAt;
-    public String type;
-    public Txn txn;
-    public String status;
-    public String hash;
+    private String updatedAt;
+    private String type;
+    private Txn txn;
+    private String status;
+    private String hash;
     @SerializedName("failed_reason")
-    public String failedReason;
+    private String failedReason;
     @SerializedName("created_at")
-    public String createdAt;
+    private String createdAt;
 }

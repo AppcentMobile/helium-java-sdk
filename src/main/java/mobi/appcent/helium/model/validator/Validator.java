@@ -15,19 +15,19 @@ import java.util.List;
 @AllArgsConstructor
 public class Validator {
     @SerializedName("version_heartbeat")
-    public String versionHeartbeat;
-    public ValidatorStatus status;
+    private String versionHeartbeat;
+    private ValidatorStatus status;
     @SerializedName("stake_status")
-    public String stakeStatus;
-    public BigInteger stake;
-    public Double penalty;
-    public List<ValidatorPenalty> penalties;
-    public String owner;
-    public String name;
+    private String stakeStatus;
+    private BigInteger stake;
+    private Double penalty;
+    private List<ValidatorPenalty> penalties;
+    private String owner;
+    private String name;
     @SerializedName("last_heartbeat")
-    public Integer lastHeartbeat;
+    private Integer lastHeartbeat;
     @SerializedName("block_added")
-    public Integer blockAdded;
-    public Integer block;
-    public String address;
+    private Integer blockAdded;
+    private Integer block;
+    private String address;
 }

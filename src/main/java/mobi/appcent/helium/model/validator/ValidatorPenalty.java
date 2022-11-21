@@ -11,7 +11,7 @@ import java.math.BigInteger;
 @Data
 @AllArgsConstructor
 public class ValidatorPenalty {
-    public String type;
-    public BigInteger height;
-    public Double amount;
+    private String type;
+    private BigInteger height;
+    private Double amount;
 }
