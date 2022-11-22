@@ -3,6 +3,7 @@ package mobi.appcent.helium.api;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.response.hotspot.*;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 

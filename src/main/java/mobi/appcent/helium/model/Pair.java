@@ -1,14 +1,14 @@
 package mobi.appcent.helium.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
 /**
  * Created by erenalpaslan on 4.11.2022
  */
+@Data
+@AllArgsConstructor
 public class Pair <T, U> {
-    public Pair(T key, U value) {
-        this.value = value;
-        this.key = key;
-    }
-
     public final T key;
     public final U value;
 
@@ -16,16 +16,5 @@ public class Pair <T, U> {
         return new Pair<>(first, second);
     }
 
-    public T getKey() {
-        return key;
-    }
 
-    public U getValue() {
-        return value;
-    }
-
-    @Override
-    public String toString() {
-        return "(" + key + ", " + value + ")";
-    }
 }

@@ -3,6 +3,9 @@ package mobi.appcent.helium;
 import com.google.gson.Gson;
 import mobi.appcent.helium.api.HeliumApi;
 import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.model.account.Account;
+import mobi.appcent.helium.response.account.AccountsResponse;
+import mobi.appcent.helium.response.city.CitiesResponse;
 
 public class Main {
 
@@ -11,10 +14,14 @@ public class Main {
 
         try {
             HeliumApi heliumApi = new HeliumApi();
-            ValidatorsResponse resp = heliumApi.validators().searchValidatorsByName()
-                    .search("jellyfish")
-                    .execute();
-            System.out.println(gson.toJson(resp));
+
+            System.out.println(
+                    heliumApi.accounts()
+                            .getValidatorsForAccount("14jXMm32j612aYGBsSRxMW9DV5oxWtJUKPnZFxqZA22jW7kRBE4")
+                            .execute()
+                            .toString()
+            );
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

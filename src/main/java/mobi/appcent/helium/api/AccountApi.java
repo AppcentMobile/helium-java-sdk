@@ -1,8 +1,10 @@
 package mobi.appcent.helium.api;
 
-import com.google.gson.reflect.TypeToken;
-import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.request.account.*;
+import mobi.appcent.helium.response.account.*;
+import mobi.appcent.helium.response.hotspot.*;
+import mobi.appcent.helium.response.ouis.OuisResponse;
+import mobi.appcent.helium.response.validator.ValidatorsResponse;
 import okhttp3.Call;
 
 import java.io.IOException;
@@ -24,435 +26,106 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         return BASE_URL + "/accounts";
     }
 
+    //region getAccounts
     @Override
-    public APIgetAccountsRequest getAccounts() throws IOException {
-        return new APIgetAccountsRequest();
+    public AccountsRequest getAccounts() throws IOException {
+        return new AccountsRequest(sdkClient);
     }
+    //endregion
 
-    public class APIgetAccountsRequest {
-        private String cursor;
-
-        private APIgetAccountsRequest() {
-        }
-
-        public APIgetAccountsRequest cursor(String cursor) {
-            this.cursor = cursor;
-            return this;
-        }
-
-        public AccountsResponse execute() throws IOException {
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("cursor", cursor));
-            Call call = sdkClient.buildCall(path(), HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(AccountsResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getRichestAccounts
     @Override
-    public APIgetRichestAccountsRequest getRichestAccounts() throws IOException {
-        return new APIgetRichestAccountsRequest();
+    public RichestAccountsRequest getRichestAccounts() throws IOException {
+        return new RichestAccountsRequest(sdkClient);
     }
+    //endregion
 
-    public class APIgetRichestAccountsRequest {
-
-        private String limit;
-
-        private APIgetRichestAccountsRequest() {
-        }
-
-        public AccountsResponse execute() throws IOException {
-            String path = path() + "/rich";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("limit", limit));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(AccountsResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-
-    }
-
+    //region getAccountForAddress
     @Override
-    public APIgetAccountForAddressRequest getAccountForAddress(String address) throws IOException {
-        return new APIgetAccountForAddressRequest(address);
+    public AccountForAddressRequest getAccountForAddress(String address) throws IOException {
+        return new AccountForAddressRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetAccountForAddressRequest {
-        private final String address;
-
-        private APIgetAccountForAddressRequest(String address) {
-            this.address = address;
-        }
-
-        public AccountResponse execute() throws IOException {
-            String path = path() + "/" + address;
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
-            Type type = TypeToken.get(AccountResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getHotspotsForAccount
     @Override
-    public APIgetHotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException {
-        return new APIgetHotspotsForAccountRequest(address);
+    public HotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException {
+        return new HotspotsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetHotspotsForAccountRequest {
-        private final String address;
-        private String cursor;
-        private String filterModes;
-
-        public APIgetHotspotsForAccountRequest(String address) {
-            this.address = address;
-        }
-
-        public APIgetHotspotsForAccountRequest cursor(String cursor) {
-            this.cursor = cursor;
-            return this;
-        }
-
-        public APIgetHotspotsForAccountRequest filterModes(String filterModes) {
-            this.filterModes = filterModes;
-            return this;
-        }
-
-        public HotspotsResponse execute() throws IOException {
-            String path = path() + "/" + address + "/hotspots";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("cursor", cursor));
-            queryParams.add(Pair.create("filter_modes", filterModes));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotsResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-
-    }
-
-    //TODO: adds response with validator api
+    //region getValidatorsForAccount
     @Override
-    public String getValidatorsForAccount(String address) throws IOException {
-        return null;
+    public ValidatorsForAccountRequest getValidatorsForAccount(String address) throws IOException {
+        return new ValidatorsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
+    //region getOUIsForAccount
     @Override
-    public APIgetOUIsForAccountRequest getOUIsForAccount(String address) throws IOException {
-        return new APIgetOUIsForAccountRequest(address);
+    public OUIsForAccountRequest getOUIsForAccount(String address) throws IOException {
+        return new OUIsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetOUIsForAccountRequest {
-        private final String address;
-        private String cursor;
-
-        private APIgetOUIsForAccountRequest(String address) {
-            this.address = address;
-        }
-
-        public APIgetOUIsForAccountRequest cursor(String cursor) {
-            this.cursor = cursor;
-            return this;
-        }
-
-        public OuisResponse execute() throws IOException {
-            String path = path() + "/" + address + "/ouis";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("cursor", cursor));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(OuisResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getRolesForAccount
     @Override
-    public APIgetRolesForAccountRequest getRolesForAccount(String address) throws IOException {
-        return new APIgetRolesForAccountRequest(address);
+    public RolesForAccountRequest getRolesForAccount(String address) throws IOException {
+        return new RolesForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetRolesForAccountRequest {
-        private final String address;
-        private String filterTypes;
-        private String minTime;
-        private String maxTime;
-        private String limit;
-
-        public APIgetRolesForAccountRequest(String address) {
-            this.address = address;
-        }
-
-        public APIgetRolesForAccountRequest filterTypes(String filterTypes) {
-            this.filterTypes = filterTypes;
-            return this;
-        }
-
-        public APIgetRolesForAccountRequest minTime(String minTime) {
-            this.minTime = minTime;
-            return this;
-        }
-
-        public APIgetRolesForAccountRequest maxTime(String maxTime) {
-            this.maxTime = maxTime;
-            return this;
-        }
-
-        public APIgetRolesForAccountRequest limit(String limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        public HotspotRolesResponse execute() throws IOException {
-            String path = path() + "/" + address + "/roles";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("filter_types", filterTypes));
-            queryParams.add(Pair.create("min_time", minTime));
-            queryParams.add(Pair.create("max_time", maxTime));
-            queryParams.add(Pair.create("limit", limit));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotRolesResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-
-    }
-
+    //region getRolesCountsForAccount
     @Override
-    public APIgetRolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException {
-        return new APIgetRolesCountsForAccountRequest(address);
+    public RolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException {
+        return new RolesCountsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetRolesCountsForAccountRequest {
-        private final String address;
-        private String filterTypes;
-
-        public APIgetRolesCountsForAccountRequest(String address) {
-            this.address = address;
-        }
-
-        public APIgetRolesCountsForAccountRequest filterTypes(String filterTypes) {
-            this.filterTypes = filterTypes;
-            return this;
-        }
-
-        public AccountRolesCountResponse execute() throws IOException {
-            String path = path() + "/" + address + "/roles/count";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("filter_types", filterTypes));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(AccountRolesCountResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getElectionsForAccount
     @Override
-    public APIgetElectionsForAccountRequest getElectionsForAccount(String address) throws IOException {
-        return new APIgetElectionsForAccountRequest(address);
+    public ElectionsForAccountRequest getElectionsForAccount(String address) throws IOException {
+        return new ElectionsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetElectionsForAccountRequest {
-        private final String address;
-        private String minTime;
-        private String maxTime;
-        private String limit;
-
-        public APIgetElectionsForAccountRequest(String address) {
-            this.address = address;
-        }
-
-        public APIgetElectionsForAccountRequest minTime(String minTime) {
-            this.minTime = minTime;
-            return this;
-        }
-
-        public APIgetElectionsForAccountRequest maxTime(String maxTime) {
-            this.maxTime = maxTime;
-            return this;
-        }
-
-        public APIgetElectionsForAccountRequest limit(String limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        public HotspotElectionsResponse execute() throws IOException {
-            String path = path() + "/" + address + "/elections";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("min_time", minTime));
-            queryParams.add(Pair.create("max_time", maxTime));
-            queryParams.add(Pair.create("limit", limit));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotElectionsResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getChallengesForAccount
     @Override
-    public APIgetChallengesForAccountRequest getChallengesForAccount(String address) throws IOException {
-        return new APIgetChallengesForAccountRequest(address);
+    public ChallengesForAccountRequest getChallengesForAccount(String address) throws IOException {
+        return new ChallengesForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetChallengesForAccountRequest {
-        private final String address;
-        private String minTime;
-        private String maxTime;
-        private String limit;
-
-        public APIgetChallengesForAccountRequest(String address) {
-            this.address = address;
-        }
-
-
-        public APIgetChallengesForAccountRequest minTime(String minTime) {
-            this.minTime = minTime;
-            return this;
-        }
-
-        public APIgetChallengesForAccountRequest maxTime(String maxTime) {
-            this.maxTime = maxTime;
-            return this;
-        }
-
-        public APIgetChallengesForAccountRequest limit(String limit) {
-            this.limit = limit;
-            return this;
-        }
-
-        public HotspotChallangesResponse execute() throws IOException {
-            String path = path() + "/" + address + "/challenges";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("min_time", minTime));
-            queryParams.add(Pair.create("max_time", maxTime));
-            queryParams.add(Pair.create("limit", limit));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotChallangesResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-
-    }
-
+    //region getPendingTransactionsForAccount
     @Override
-    public APIgetPendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException {
-        return new APIgetPendingTransactionsForAccountRequest(address);
+    public PendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException {
+        return new PendingTransactionsForAccountRequest(sdkClient, address);
     }
+    //endregion
 
-    public class APIgetPendingTransactionsForAccountRequest {
-        private final String address;
-        private String cursor;
-
-        public APIgetPendingTransactionsForAccountRequest(String address) {
-            this.address = address;
-        }
-
-
-        public APIgetPendingTransactionsForAccountRequest cursor(String cursor) {
-            this.cursor = cursor;
-            return this;
-        }
-
-        public AccountTransactionsResponse execute() throws IOException {
-            String path = path() + "/" + address + "/pending_transactions";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("cursor", cursor));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(AccountTransactionsResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-
-    }
-
+    //region getRewardsForAccount
     @Override
-    public APIgetRewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException {
-        return new APIgetRewardsForAccountRequest(address, minTime);
+    public RewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException {
+        return new RewardsForAccountRequest(sdkClient, address, minTime);
     }
+    //endregion
 
-    public class APIgetRewardsForAccountRequest {
-        private final String address;
-        private final String minTime;
-        private String maxTime;
-        private String cursor;
-
-        public APIgetRewardsForAccountRequest(String address, String minTime) {
-            this.address = address;
-            this.minTime = minTime;
-        }
-
-        public APIgetRewardsForAccountRequest maxTime(String maxTime) {
-            this.maxTime = maxTime;
-            return this;
-        }
-
-        public APIgetRewardsForAccountRequest cursor(String cursor) {
-            this.cursor = cursor;
-            return this;
-        }
-
-        public HotspotRewardResponse execute() throws IOException {
-            String path = path() + "/" + address + "/rewards";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("cursor", cursor));
-            queryParams.add(Pair.create("max_time", maxTime));
-            queryParams.add(Pair.create("min_time", minTime));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotRewardResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getRewardsByRewardsBlockForAccount
     @Override
-    public APIgetRewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
-        return new APIgetRewardsByRewardsBlockForAccountRequest(address, block);
+    public RewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException {
+        return new RewardsByRewardsBlockForAccountRequest(sdkClient, address, block);
     }
+    //endregion
 
-    public class APIgetRewardsByRewardsBlockForAccountRequest {
-        private final String address;
-        private final String block;
-
-        private APIgetRewardsByRewardsBlockForAccountRequest(String address, String block) {
-            this.address = address;
-            this.block = block;
-        }
-
-        public HotspotRewardResponse execute() throws IOException {
-            String path = path() + "/" + address + "/rewards/" + block;
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
-            Type type = TypeToken.get(HotspotRewardResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
+    //region getRewardTotalsForAccount
     @Override
-    public APIgetRewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime, String maxTime) throws IOException {
-        return new APIgetRewardTotalsForAccountRequest(address, minTime, maxTime);
+    public RewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime) throws IOException {
+        return new RewardTotalsForAccountRequest(sdkClient, address, minTime);
     }
+    //endregion
 
-    public class APIgetRewardTotalsForAccountRequest {
-        private final String address;
-        private final String minTime;
-        private final String maxTime;
-        private String bucket;
-
-        private APIgetRewardTotalsForAccountRequest(String address, String minTime, String maxTime) {
-            this.address = address;
-            this.minTime = minTime;
-            this.maxTime = maxTime;
-        }
-
-        public APIgetRewardTotalsForAccountRequest bucket(String bucket) {
-            this.bucket = bucket;
-            return this;
-        }
-
-        public HotspotTotalRewardResponse execute() throws IOException {
-            String path = path() + "/" + address + "/rewards/sum";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("bucket", bucket));
-            queryParams.add(Pair.create("max_time", maxTime));
-            queryParams.add(Pair.create("min_time", minTime));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotTotalRewardResponse.class).getType();
-            return AccountApi.this.execute(call, type);
-        }
-    }
-
-    //TODO 500 response
-    @Override
-    public String getStatsForAccount(String address) throws IOException {
+    //TODO: 500 response
+    private String getStatsForAccount(String address) throws IOException {
         return null;
     }
 }

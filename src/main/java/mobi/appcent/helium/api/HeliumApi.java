@@ -13,6 +13,7 @@ public class HeliumApi {
     private final BlockApi blockApi = BlockApi.getInstance();
     private final AccountApi accountApi = AccountApi.getInstance();
     private final ValidatorApi validatorApi = ValidatorApi.getInstance();
+
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {

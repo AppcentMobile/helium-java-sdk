@@ -1,24 +1,25 @@
 package mobi.appcent.helium.api;
 
+import mobi.appcent.helium.request.account.*;
 import java.io.IOException;
 
 /**
  * Created by erenalpaslan on 5.11.2022
  */
 public interface IAccountsApi {
-    AccountApi.APIgetAccountsRequest getAccounts() throws IOException;
-    AccountApi.APIgetRichestAccountsRequest getRichestAccounts() throws IOException;
-    AccountApi.APIgetAccountForAddressRequest getAccountForAddress(String address) throws IOException;
-    AccountApi.APIgetHotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException;
-    String getValidatorsForAccount(String address) throws IOException;
-    AccountApi.APIgetOUIsForAccountRequest getOUIsForAccount(String address) throws IOException;
-    AccountApi.APIgetRolesForAccountRequest getRolesForAccount(String address) throws IOException;
-    AccountApi.APIgetRolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException;
-    AccountApi.APIgetElectionsForAccountRequest getElectionsForAccount(String address) throws IOException;
-    AccountApi.APIgetChallengesForAccountRequest getChallengesForAccount(String address) throws IOException;
-    AccountApi.APIgetPendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException;
-    AccountApi.APIgetRewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException;
-    AccountApi.APIgetRewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException;
-    AccountApi.APIgetRewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime, String maxTime) throws IOException;
-    String getStatsForAccount(String address) throws IOException;
+    AccountsRequest getAccounts() throws IOException;
+    RichestAccountsRequest getRichestAccounts() throws IOException;
+    AccountForAddressRequest getAccountForAddress(String address) throws IOException;
+    HotspotsForAccountRequest getHotspotsForAccount(String address) throws IOException;
+    ValidatorsForAccountRequest getValidatorsForAccount(String address) throws IOException;
+    OUIsForAccountRequest getOUIsForAccount(String address) throws IOException;
+    RolesForAccountRequest getRolesForAccount(String address) throws IOException;
+    RolesCountsForAccountRequest getRolesCountsForAccount(String address) throws IOException;
+    ElectionsForAccountRequest getElectionsForAccount(String address) throws IOException;
+    ChallengesForAccountRequest getChallengesForAccount(String address) throws IOException;
+    PendingTransactionsForAccountRequest getPendingTransactionsForAccount(String address) throws IOException;
+    RewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException;
+    RewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException;
+    RewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime) throws IOException;
+
 }
