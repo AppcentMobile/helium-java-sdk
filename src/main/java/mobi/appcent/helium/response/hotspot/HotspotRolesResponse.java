@@ -12,5 +12,6 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class HotspotRolesResponse {
-    public List<Role> data;
+    private List<Role> data;
+    private String cursor;
 }
