@@ -20,5 +20,5 @@ public interface IValidatorsApi {
     ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash) throws IOException;
     RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime) throws IOException;
     RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime) throws IOException;
-    RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String minTime, String maxTime) throws IOException;
+    RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime) throws IOException;
 }

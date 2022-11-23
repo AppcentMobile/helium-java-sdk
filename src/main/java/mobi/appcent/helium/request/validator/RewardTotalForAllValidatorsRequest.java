@@ -2,12 +2,11 @@ package mobi.appcent.helium.request.validator;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.ValidatorApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
-import mobi.appcent.helium.model.ValidatorsRewardsTotalResponse;
+import mobi.appcent.helium.response.validator.ValidatorsRewardsTotalResponse;
 import mobi.appcent.helium.request.BaseRequest;
 import okhttp3.Call;
 
@@ -20,17 +19,19 @@ import java.util.ArrayList;
  */
 public class RewardTotalForAllValidatorsRequest extends BaseRequest {
     private final HeliumSdkClient client;
+    private final String address;
     private final String minTime;
     private final String maxTime;
 
-    public RewardTotalForAllValidatorsRequest(HeliumSdkClient client, String minTime, String maxTime) {
+    public RewardTotalForAllValidatorsRequest(HeliumSdkClient client, String address, String minTime, String maxTime) {
         this.client = client;
+        this.address = address;
         this.minTime = minTime;
         this.maxTime = maxTime;
     }
 
     public ValidatorsRewardsTotalResponse execute() throws IOException {
-        String path = UrlConstant.VALIDATORS_PATH + "/rewards/sum";
+        String path = UrlConstant.VALIDATORS_PATH + "/"+ address +"/sum";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MAX_TIME, maxTime));
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));

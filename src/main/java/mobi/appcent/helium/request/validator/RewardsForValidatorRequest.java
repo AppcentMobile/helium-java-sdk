@@ -2,13 +2,12 @@ package mobi.appcent.helium.request.validator;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.ValidatorApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.HotspotRewardResponse;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
+import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 
 import java.io.IOException;

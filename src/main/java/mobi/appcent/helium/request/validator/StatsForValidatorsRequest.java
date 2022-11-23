@@ -2,10 +2,9 @@ package mobi.appcent.helium.request.validator;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.ValidatorApi;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.ValidatorsStatsResponse;
+import mobi.appcent.helium.response.validator.ValidatorsStatsResponse;
 import mobi.appcent.helium.request.BaseRequest;
 import okhttp3.Call;
 

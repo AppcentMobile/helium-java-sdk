@@ -25,7 +25,7 @@ public class ValidatorRolesRequest extends BaseRequest {
     private String filterTypes;
     private String minTime;
     private String maxTime;
-    private int limit;
+    private Integer limit;
 
     public ValidatorRolesRequest(HeliumSdkClient client, String address) {
         this.client = client;
@@ -52,7 +52,7 @@ public class ValidatorRolesRequest extends BaseRequest {
         return this;
     }
 
-    public ValidatorRolesRequest limit(int limit) {
+    public ValidatorRolesRequest limit(Integer limit) {
         this.limit = limit;
         return this;
     }

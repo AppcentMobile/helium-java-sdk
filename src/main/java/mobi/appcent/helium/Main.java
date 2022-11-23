@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.accounts()
-                            .getValidatorsForAccount("14jXMm32j612aYGBsSRxMW9DV5oxWtJUKPnZFxqZA22jW7kRBE4")
+                    heliumApi.validators()
+                            .getValidators()
                             .execute()
                             .toString()
             );

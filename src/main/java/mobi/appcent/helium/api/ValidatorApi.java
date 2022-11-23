@@ -1,15 +1,8 @@
 package mobi.appcent.helium.api;
 
-import com.google.gson.reflect.TypeToken;
-import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.request.validator.*;
-import okhttp3.Call;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by erenalpaslan on 7.11.2022
@@ -85,7 +78,7 @@ public class ValidatorApi extends BaseApi implements IValidatorsApi{
     }
 
     @Override
-    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String minTime, String maxTime) throws IOException {
-        return new RewardTotalForAllValidatorsRequest(sdkClient, minTime, maxTime);
+    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime) throws IOException {
+        return new RewardTotalForAllValidatorsRequest(sdkClient, address, minTime, maxTime);
     }
 }
