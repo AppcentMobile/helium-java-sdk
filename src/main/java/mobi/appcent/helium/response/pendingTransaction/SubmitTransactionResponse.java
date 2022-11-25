@@ -2,7 +2,7 @@ package mobi.appcent.helium.response.pendingTransaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import mobi.appcent.helium.model.pendingTransaction.SubmitTransaction;
+import mobi.appcent.helium.model.pendingtransaction.SubmitTransaction;
 
 /**
  * Created by erenalpaslan on 20.11.2022

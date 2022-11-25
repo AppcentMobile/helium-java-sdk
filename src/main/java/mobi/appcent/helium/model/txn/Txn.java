@@ -12,10 +12,10 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class Txn {
-    public String type;
-    public List<Payment> payments;
-    public String payer;
-    public Integer nonce;
-    public String hash;
-    public Integer fee;
+    private String type;
+    private List<Payment> payments;
+    private String payer;
+    private Integer nonce;
+    private String hash;
+    private Integer fee;
 }

@@ -13,9 +13,9 @@ import java.math.BigInteger;
 @AllArgsConstructor
 public class Payment {
     @SerializedName("token_type")
-    public String tokenType;
-    public String payee;
-    public String memo;
-    public Boolean max;
-    public BigInteger amount;
+    private String tokenType;
+    private String payee;
+    private String memo;
+    private Boolean max;
+    private BigInteger amount;
 }

@@ -1,4 +1,4 @@
-package mobi.appcent.helium.model.pendingTransaction;
+package mobi.appcent.helium.model.pendingtransaction;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
@@ -12,13 +12,13 @@ import mobi.appcent.helium.model.txn.Txn;
 @AllArgsConstructor
 public class PendingTransactionStatus {
     @SerializedName("updated_at")
-    public String updatedAt;
-    public String type;
-    public Txn txn;
-    public String status;
-    public String hash;
+    private String updatedAt;
+    private String type;
+    private Txn txn;
+    private String status;
+    private String hash;
     @SerializedName("failed_reason")
-    public String failedReason;
+    private String failedReason;
     @SerializedName("created_at")
-    public String createdAt;
+    private String createdAt;
 }

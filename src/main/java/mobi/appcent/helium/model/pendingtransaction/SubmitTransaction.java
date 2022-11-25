@@ -1,4 +1,4 @@
-package mobi.appcent.helium.model.pendingTransaction;
+package mobi.appcent.helium.model.pendingtransaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,5 +9,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class SubmitTransaction {
-    public String hash;
+    private String hash;
 }
