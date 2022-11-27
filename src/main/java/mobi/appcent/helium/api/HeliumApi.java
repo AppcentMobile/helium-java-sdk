@@ -13,7 +13,7 @@ public class HeliumApi {
     private final BlockApi blockApi = BlockApi.getInstance();
     private final AccountApi accountApi = AccountApi.getInstance();
     private final ValidatorApi validatorApi = ValidatorApi.getInstance();
-
+    private final ChallengesApi challengesApi = ChallengesApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -32,6 +32,7 @@ public class HeliumApi {
         blockApi.setSdkClient(sdkClient);
         accountApi.setSdkClient(sdkClient);
         validatorApi.setSdkClient(sdkClient);
+        challengesApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
@@ -51,4 +52,6 @@ public class HeliumApi {
     public AccountApi accounts() { return accountApi; }
 
     public ValidatorApi validators() {return validatorApi; }
+
+    public ChallengesApi challenges() { return challengesApi; }
 }

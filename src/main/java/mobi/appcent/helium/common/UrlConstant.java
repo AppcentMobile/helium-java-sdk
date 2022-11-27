@@ -8,4 +8,5 @@ public class UrlConstant {
     public static final String PENDING_TRANSACTION_PATH = BASE_PATH + "/pending_transactions";
     public static final String ACCOUNTS_PATH = BASE_PATH + "/accounts";
     public static final String VALIDATORS_PATH = BASE_PATH + "/validators";
+    public static final String CHALLENGES_PATH = BASE_PATH + "/challenges";
 }
