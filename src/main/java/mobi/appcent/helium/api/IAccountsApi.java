@@ -1,7 +1,6 @@
 package mobi.appcent.helium.api;
 
 import mobi.appcent.helium.request.account.*;
-
 import java.io.IOException;
 
 /**
@@ -22,4 +21,5 @@ public interface IAccountsApi {
     RewardsForAccountRequest getRewardsForAccount(String address, String minTime) throws IOException;
     RewardsByRewardsBlockForAccountRequest getRewardsByRewardsBlockForAccount(String address, String block) throws IOException;
     RewardTotalsForAccountRequest getRewardTotalsForAccount(String address, String minTime) throws IOException;
+
 }

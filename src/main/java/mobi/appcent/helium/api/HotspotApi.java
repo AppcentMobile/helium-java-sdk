@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.response.hotspot.*;
+import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
