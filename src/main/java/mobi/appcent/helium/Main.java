@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.validators()
-                            .getValidators()
+                    heliumApi.dcBurns()
+                            .getDCBurnEvents()
                             .execute()
                             .toString()
             );
