@@ -1,8 +1,5 @@
 package mobi.appcent.helium.api;
 
-import com.google.gson.reflect.TypeToken;
-import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.request.account.*;
 import mobi.appcent.helium.response.account.*;
 import mobi.appcent.helium.response.hotspot.*;
