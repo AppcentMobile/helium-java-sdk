@@ -12,4 +12,5 @@ public class FieldConstant {
     public static final String BUCKET = "bucket";
     public static final String FILTER_TYPES = "filter_types";
     public static final String MAX_BLOCK = "max_block";
+    public static final String SEARCH = "search";
 }
