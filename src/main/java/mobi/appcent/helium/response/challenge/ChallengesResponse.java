@@ -1,8 +1,8 @@
-package mobi.appcent.helium.response.hotspot;
+package mobi.appcent.helium.response.challenge;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import mobi.appcent.helium.model.hotspot.Challenge;
+import mobi.appcent.helium.model.challenge.Challenge;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Data
 @AllArgsConstructor
-public class HotspotChallangesResponse {
+public class ChallengesResponse {
     public List<Challenge> data;
     public String cursor;
 }

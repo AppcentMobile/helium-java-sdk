@@ -1,4 +1,4 @@
-package mobi.appcent.helium.model.hotspot;
+package mobi.appcent.helium.model.challenge;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;

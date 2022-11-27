@@ -1,8 +1,9 @@
-package mobi.appcent.helium.model.hotspot;
+package mobi.appcent.helium.model.challenge;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import mobi.appcent.helium.model.hotspot.Geocode;
 
 import java.util.List;
 
