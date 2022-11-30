@@ -16,6 +16,7 @@ public class HeliumApi {
     private final OUIsApi ouisApi = OUIsApi.getInstance();
     private final ChainVariablesApi chainVariablesApi = ChainVariablesApi.getInstance();
     private final ValidatorApi validatorApi = ValidatorApi.getInstance();
+    private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
@@ -38,6 +39,7 @@ public class HeliumApi {
         ouisApi.setSdkClient(sdkClient);
         chainVariablesApi.setSdkClient(sdkClient);
         validatorApi.setSdkClient(sdkClient);
+        dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
     }
 
@@ -65,6 +67,7 @@ public class HeliumApi {
 
     public ValidatorApi validators() {return validatorApi; }
 
-    public OraclePricesApi oraclePrices() { return oraclePricesApi; }
+    public DCBurnsApi dcBurns() { return dcBurnsApi; }
 
+    public OraclePricesApi oraclePrices() { return oraclePricesApi; }
 }
