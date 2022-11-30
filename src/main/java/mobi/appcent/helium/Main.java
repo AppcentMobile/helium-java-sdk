@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.oraclePrices()
-                            .getListOfActivityForSpecificOracle("14hntpRicek9pxzHBDPVWPwYHHmExrksaxzAsTjjstgLfnfG5Ve")
+                    heliumApi.chainVariables()
+                            .getListOfChainVariableActivity()
                             .execute()
                             .toString()
             );
