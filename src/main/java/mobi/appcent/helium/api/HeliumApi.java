@@ -13,6 +13,9 @@ public class HeliumApi {
     private final BlockApi blockApi = BlockApi.getInstance();
     private final AccountApi accountApi = AccountApi.getInstance();
     private final OUIsApi ouisApi = OUIsApi.getInstance();
+    private final ChainVariablesApi chainVariablesApi = ChainVariablesApi.getInstance();
+    private final ValidatorApi validatorApi = ValidatorApi.getInstance();
+    private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -31,6 +34,9 @@ public class HeliumApi {
         blockApi.setSdkClient(sdkClient);
         accountApi.setSdkClient(sdkClient);
         ouisApi.setSdkClient(sdkClient);
+        chainVariablesApi.setSdkClient(sdkClient);
+        validatorApi.setSdkClient(sdkClient);
+        oraclePricesApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
@@ -50,4 +56,11 @@ public class HeliumApi {
     public AccountApi accounts() { return accountApi; }
 
     public OUIsApi ouis() { return ouisApi; }
+
+    public ChainVariablesApi chainVariables() { return chainVariablesApi; }
+
+    public ValidatorApi validators() {return validatorApi; }
+
+    public OraclePricesApi oraclePrices() { return oraclePricesApi; }
+
 }
