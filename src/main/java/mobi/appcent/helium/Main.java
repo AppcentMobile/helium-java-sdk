@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.dcBurns()
-                            .getDCBurnEvents()
+                    heliumApi.challenges()
+                            .getListOfChallengesReceipt()
                             .execute()
                             .toString()
             );
