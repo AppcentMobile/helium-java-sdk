@@ -1,14 +1,13 @@
-package mobi.appcent.helium.request.account;
+package mobi.appcent.helium.request.validator;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.AccountApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.account.AccountsResponse;
+import mobi.appcent.helium.response.validator.ValidatorsResponse;
 import okhttp3.Call;
 
 import java.io.IOException;
@@ -16,29 +15,27 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
- * Created by erenalpaslan on 21.11.2022
+ * Created by erenalpaslan on 22.11.2022
  */
-public class RichestAccountsRequest extends BaseRequest {
-
+public class SearchValidatorsByNameRequest extends BaseRequest {
     private final HeliumSdkClient client;
-    private String limit;
+    private String search;
 
-    public RichestAccountsRequest(HeliumSdkClient client) {
+    public SearchValidatorsByNameRequest(HeliumSdkClient client) {
         this.client = client;
     }
 
-    public RichestAccountsRequest limit(String limit) {
-        this.limit = limit;
+    public SearchValidatorsByNameRequest search(String search) {
+        this.search = search;
         return this;
     }
 
-    public AccountsResponse execute() throws IOException {
-        String path = UrlConstant.ACCOUNTS_PATH + "/rich";
+    public ValidatorsResponse execute() throws IOException {
+        String path = UrlConstant.VALIDATORS_PATH + "/name";
         ArrayList<Pair> queryParams = new ArrayList<>();
-        queryParams.add(Pair.create(FieldConstant.LIMIT, limit));
+        queryParams.add(Pair.create(FieldConstant.SEARCH, search));
         Call call = client.buildCall(path, HttpMethod.GET, queryParams, null, null);
-        Type type = TypeToken.get(AccountsResponse.class).getType();
+        Type type = TypeToken.get(ValidatorsResponse.class).getType();
         return execute(call, type);
     }
-
 }
