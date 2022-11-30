@@ -12,6 +12,7 @@ public class HeliumApi {
     private final CityApi cityApi = CityApi.getInstance();
     private final BlockApi blockApi = BlockApi.getInstance();
     private final AccountApi accountApi = AccountApi.getInstance();
+    private final RewardApi rewardApi = RewardApi.getInstance();
     private final OUIsApi ouisApi = OUIsApi.getInstance();
     private final ChainVariablesApi chainVariablesApi = ChainVariablesApi.getInstance();
     private final ValidatorApi validatorApi = ValidatorApi.getInstance();
@@ -33,6 +34,7 @@ public class HeliumApi {
         cityApi.setSdkClient(sdkClient);
         blockApi.setSdkClient(sdkClient);
         accountApi.setSdkClient(sdkClient);
+        rewardApi.setSdkClient(sdkClient);
         ouisApi.setSdkClient(sdkClient);
         chainVariablesApi.setSdkClient(sdkClient);
         validatorApi.setSdkClient(sdkClient);
@@ -54,6 +56,8 @@ public class HeliumApi {
     public BlockApi blocks() { return blockApi; }
 
     public AccountApi accounts() { return accountApi; }
+
+    public RewardApi rewards() { return rewardApi; }
 
     public OUIsApi ouis() { return ouisApi; }
 

@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.ouis()
-                            .getAnOUI("49")
+                    heliumApi.rewards()
+                            .getRewardTotals("-7%20day")
                             .execute()
                             .toString()
             );
