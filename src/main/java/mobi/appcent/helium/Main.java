@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.chainVariables()
-                            .getListOfChainVariableActivity()
+                    heliumApi.ouis()
+                            .getAnOUI("49")
                             .execute()
                             .toString()
             );
