@@ -12,4 +12,5 @@ public class UrlConstant {
     public static final String CHAIN_VARIABLES_PATH = BASE_PATH + "/vars";
     public static final String ORACLE_PRICES_PATH = BASE_PATH + "/oracle";
     public static final String VALIDATORS_PATH = BASE_PATH + "/validators";
+    public static final String DC_BURNS_PATH = BASE_PATH + "/dc_burns";
 }

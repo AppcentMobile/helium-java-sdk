@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.rewards()
-                            .getRewardTotals("-7%20day")
+                    heliumApi.dcBurns()
+                            .getDCBurnEvents()
                             .execute()
                             .toString()
             );
