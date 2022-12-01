@@ -1,4 +1,4 @@
-package mobi.appcent.helium.request.account;
+package mobi.appcent.helium.request.challenge;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
@@ -15,45 +15,47 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 /**
- * Created by erenalpaslan on 21.11.2022
+ * Created by erenalpaslan on 27.11.2022
  */
-public class ChallengesForAccountRequest extends BaseRequest {
+public class ListOfChallengesReceiptRequest extends BaseRequest {
     private final HeliumSdkClient client;
-    private final String address;
+    private String cursor;
     private String minTime;
     private String maxTime;
-    private String limit;
+    private Integer limit;
 
-    public ChallengesForAccountRequest(HeliumSdkClient client, String address) {
+    public ListOfChallengesReceiptRequest(HeliumSdkClient client) {
         this.client = client;
-        this.address = address;
     }
 
+    public ListOfChallengesReceiptRequest cursor(String cursor) {
+        this.cursor = cursor;
+        return this;
+    }
 
-    public ChallengesForAccountRequest minTime(String minTime) {
+    public ListOfChallengesReceiptRequest minTime(String minTime) {
         this.minTime = minTime;
         return this;
     }
 
-    public ChallengesForAccountRequest maxTime(String maxTime) {
+    public ListOfChallengesReceiptRequest maxTime(String maxTime) {
         this.maxTime = maxTime;
         return this;
     }
 
-    public ChallengesForAccountRequest limit(String limit) {
+    public ListOfChallengesReceiptRequest limit(Integer limit) {
         this.limit = limit;
         return this;
     }
 
     public ChallengesResponse execute() throws IOException {
-        String path = UrlConstant.ACCOUNTS_PATH + "/" + address + "/challenges";
         ArrayList<Pair> queryParams = new ArrayList<>();
+        queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));
         queryParams.add(Pair.create(FieldConstant.MAX_TIME, maxTime));
         queryParams.add(Pair.create(FieldConstant.LIMIT, limit));
-        Call call = client.buildCall(path, HttpMethod.GET, queryParams, null, null);
+        Call call = client.buildCall(UrlConstant.CHALLENGES_PATH, HttpMethod.GET, queryParams, null, null);
         Type type = TypeToken.get(ChallengesResponse.class).getType();
         return execute(call, type);
     }
-
 }
