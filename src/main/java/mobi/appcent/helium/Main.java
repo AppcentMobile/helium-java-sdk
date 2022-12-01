@@ -17,7 +17,7 @@ public class Main {
 
             System.out.println(
                     heliumApi.dcBurns()
-                            .getDCBurnEvents()
+                            .getDCBurnTotals("-1%20week")
                             .execute()
                             .toString()
             );

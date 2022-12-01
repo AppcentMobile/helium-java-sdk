@@ -20,4 +20,5 @@ public class DCBurnTotal {
     private BigInteger assertLocation;
     @SerializedName("add_gateway")
     private BigInteger addGateway;
+    private Integer routing;
 }
