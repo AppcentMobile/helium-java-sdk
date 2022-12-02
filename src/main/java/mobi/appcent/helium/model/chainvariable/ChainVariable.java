@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -196,11 +197,8 @@ public class ChainVariable {
     @SerializedName("max_open_sc")
     private Integer maxOpenSc;
 
-    //TODO: Handle mapping
-    /*
     @SerializedName("staking_keys_to_mode_mappings")
-    private String stakingKeysToModeMappings;
-    */
+    private HashMap<String, String> stakingKeysToModeMappings;
 
     @SerializedName("regulatory_regions")
     private String regulatoryRegions;
