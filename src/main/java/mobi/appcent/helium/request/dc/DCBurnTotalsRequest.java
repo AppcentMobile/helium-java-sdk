@@ -1,5 +1,9 @@
 package mobi.appcent.helium.request.dc;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.FieldConstant;
@@ -11,6 +15,7 @@ import mobi.appcent.helium.response.account.AccountsResponse;
 import mobi.appcent.helium.response.dc.DCBurnTotalResponse;
 import mobi.appcent.helium.response.dc.DCBurnTotalsResponse;
 import okhttp3.Call;
+import okhttp3.Response;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -49,5 +54,32 @@ public class DCBurnTotalsRequest extends BaseRequest {
         Call call = client.buildCall(path, HttpMethod.GET, queryParams, null, null);
         Type type = TypeToken.get(DCBurnTotalsResponse.class).getType();
         return execute(call, type);
+    }
+
+    @Override
+    public <T> T handleResponse(Response response, Type returnType) throws IOException {
+        if(response.isSuccessful()) {
+            if (response.body() != null) {
+                JsonObject obj = new JsonParser().parse(response.body().string()).getAsJsonObject();
+                JsonElement data = obj.get("data");
+                if (!isJsonArray(data)) {
+                    convertToJsonArray(obj, data);
+                }
+
+                return deserialize(obj.toString(), returnType);
+            }
+        }
+        return null;
+    }
+
+    private static JsonObject convertToJsonArray(JsonObject obj, JsonElement data) {
+        JsonArray arr = new JsonArray();
+        arr.add(data.getAsJsonObject());
+        obj.add("data", arr);
+        return obj;
+    }
+
+    public static Boolean isJsonArray(JsonElement element) {
+        return element.isJsonArray();
     }
 }

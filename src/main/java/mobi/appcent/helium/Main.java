@@ -16,8 +16,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.challenges()
-                            .getListOfChallengesReceipt()
+                    heliumApi.dcBurns()
+                            .getDCBurnTotals("-1%20week")
                             .execute()
                             .toString()
             );

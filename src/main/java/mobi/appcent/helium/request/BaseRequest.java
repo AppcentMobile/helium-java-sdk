@@ -26,7 +26,7 @@ public abstract class BaseRequest {
     }
 
     //TODO: Handle Error
-    private <T> T handleResponse(Response response, Type returnType) throws IOException {
+    public <T> T handleResponse(Response response, Type returnType) throws IOException {
         if(response.isSuccessful()) {
             if (response.body() != null) {
                 return deserialize(response.body().string(), returnType);
