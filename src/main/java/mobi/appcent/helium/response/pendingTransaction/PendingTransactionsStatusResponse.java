@@ -12,5 +12,5 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 public class PendingTransactionsStatusResponse {
-    public List<PendingTransactionStatus> data;
+    private List<PendingTransactionStatus> data;
 }
