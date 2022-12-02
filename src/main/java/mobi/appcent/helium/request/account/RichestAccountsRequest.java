@@ -27,6 +27,11 @@ public class RichestAccountsRequest extends BaseRequest {
         this.client = client;
     }
 
+    public RichestAccountsRequest limit(String limit) {
+        this.limit = limit;
+        return this;
+    }
+
     public AccountsResponse execute() throws IOException {
         String path = UrlConstant.ACCOUNTS_PATH + "/rich";
         ArrayList<Pair> queryParams = new ArrayList<>();

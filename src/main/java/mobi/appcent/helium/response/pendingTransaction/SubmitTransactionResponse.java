@@ -10,5 +10,5 @@ import mobi.appcent.helium.model.pendingtransaction.SubmitTransaction;
 @Data
 @AllArgsConstructor
 public class SubmitTransactionResponse {
-    public SubmitTransaction data;
+    private SubmitTransaction data;
 }

@@ -2,13 +2,12 @@ package mobi.appcent.helium.request.account;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.AccountApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.hotspot.HotspotChallangesResponse;
+import mobi.appcent.helium.response.challenge.ChallengesResponse;
 import okhttp3.Call;
 
 import java.io.IOException;
@@ -46,14 +45,14 @@ public class ChallengesForAccountRequest extends BaseRequest {
         return this;
     }
 
-    public HotspotChallangesResponse execute() throws IOException {
+    public ChallengesResponse execute() throws IOException {
         String path = UrlConstant.ACCOUNTS_PATH + "/" + address + "/challenges";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));
         queryParams.add(Pair.create(FieldConstant.MAX_TIME, maxTime));
         queryParams.add(Pair.create(FieldConstant.LIMIT, limit));
         Call call = client.buildCall(path, HttpMethod.GET, queryParams, null, null);
-        Type type = TypeToken.get(HotspotChallangesResponse.class).getType();
+        Type type = TypeToken.get(ChallengesResponse.class).getType();
         return execute(call, type);
     }
 

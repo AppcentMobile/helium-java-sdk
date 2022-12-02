@@ -3,7 +3,9 @@ package mobi.appcent.helium.api;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
+import mobi.appcent.helium.response.challenge.ChallengesResponse;
 import mobi.appcent.helium.response.hotspot.*;
+import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
@@ -384,7 +386,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
         public APIgetHotspotChallangesRequest(String address) { this.address = address; }
 
-        public HotspotChallangesResponse execute() throws IOException {
+        public ChallengesResponse execute() throws IOException {
             String path = path()+"/"+address+"/challenges";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -392,7 +394,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             queryParams.add(Pair.create("max_time", maxTime));
             queryParams.add(Pair.create("limit", limit));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotChallangesResponse.class).getType();
+            Type type = TypeToken.get(ChallengesResponse.class).getType();
             return HotspotApi.this.execute(call, type);
         }
     }
