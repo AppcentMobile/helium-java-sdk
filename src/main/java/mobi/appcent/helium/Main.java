@@ -16,11 +16,9 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.chainVariables()
-                            .getChainVariables()
+                    heliumApi.elections()
+                            .getListOfElections()
                             .execute()
-                            .getData()
-                            .getStakingKeysToModeMappings()
                             .toString()
             );
 
