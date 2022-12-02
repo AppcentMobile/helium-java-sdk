@@ -17,10 +17,13 @@ public class Main {
 
             System.out.println(
                     heliumApi.chainVariables()
-                            .getListOfChainVariableActivity()
+                            .getChainVariables()
                             .execute()
+                            .getData()
+                            .getStakingKeysToModeMappings()
                             .toString()
             );
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
