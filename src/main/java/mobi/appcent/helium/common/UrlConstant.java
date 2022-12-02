@@ -14,4 +14,5 @@ public class UrlConstant {
     public static final String VALIDATORS_PATH = BASE_PATH + "/validators";
     public static final String CHALLENGES_PATH = BASE_PATH + "/challenges";
     public static final String DC_BURNS_PATH = BASE_PATH + "/dc_burns";
+    public static final String ASSERT_LOCATIONS_PATH = BASE_PATH + "/assert_locations";
 }
