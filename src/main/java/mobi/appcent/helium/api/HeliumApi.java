@@ -19,6 +19,7 @@ public class HeliumApi {
     private final ChallengesApi challengesApi = ChallengesApi.getInstance();
     private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
+    private final TransactionsApi transactionsApi = TransactionsApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -43,6 +44,7 @@ public class HeliumApi {
         challengesApi.setSdkClient(sdkClient);
         dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
+        transactionsApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
@@ -74,4 +76,6 @@ public class HeliumApi {
     public DCBurnsApi dcBurns() { return dcBurnsApi; }
 
     public OraclePricesApi oraclePrices() { return oraclePricesApi; }
+
+    public TransactionsApi transactions() { return transactionsApi; }
 }
