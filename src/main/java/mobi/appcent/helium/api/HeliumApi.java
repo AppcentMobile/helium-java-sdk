@@ -12,8 +12,12 @@ public class HeliumApi {
     private final CityApi cityApi = CityApi.getInstance();
     private final BlockApi blockApi = BlockApi.getInstance();
     private final AccountApi accountApi = AccountApi.getInstance();
+    private final RewardApi rewardApi = RewardApi.getInstance();
+    private final OUIsApi ouisApi = OUIsApi.getInstance();
     private final ChainVariablesApi chainVariablesApi = ChainVariablesApi.getInstance();
     private final ValidatorApi validatorApi = ValidatorApi.getInstance();
+    private final ChallengesApi challengesApi = ChallengesApi.getInstance();
+    private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
@@ -32,8 +36,12 @@ public class HeliumApi {
         cityApi.setSdkClient(sdkClient);
         blockApi.setSdkClient(sdkClient);
         accountApi.setSdkClient(sdkClient);
+        rewardApi.setSdkClient(sdkClient);
+        ouisApi.setSdkClient(sdkClient);
         chainVariablesApi.setSdkClient(sdkClient);
         validatorApi.setSdkClient(sdkClient);
+        challengesApi.setSdkClient(sdkClient);
+        dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
     }
 
@@ -53,10 +61,17 @@ public class HeliumApi {
 
     public AccountApi accounts() { return accountApi; }
 
+    public RewardApi rewards() { return rewardApi; }
+
+    public OUIsApi ouis() { return ouisApi; }
+
     public ChainVariablesApi chainVariables() { return chainVariablesApi; }
 
     public ValidatorApi validators() {return validatorApi; }
 
-    public OraclePricesApi oraclePrices() { return oraclePricesApi; }
+    public ChallengesApi challenges() { return challengesApi; }
 
+    public DCBurnsApi dcBurns() { return dcBurnsApi; }
+
+    public OraclePricesApi oraclePrices() { return oraclePricesApi; }
 }
