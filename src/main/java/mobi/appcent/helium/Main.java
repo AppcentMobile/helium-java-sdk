@@ -16,11 +16,14 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.dcBurns()
-                            .getDCBurnTotals("-1%20week")
+                    heliumApi.chainVariables()
+                            .getChainVariables()
                             .execute()
+                            .getData()
+                            .getStakingKeysToModeMappings()
                             .toString()
             );
+
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
