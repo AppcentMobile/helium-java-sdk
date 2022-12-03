@@ -1,6 +1,7 @@
 package mobi.appcent.helium.api;
 
 import mobi.appcent.helium.HeliumSdkClient;
+import mobi.appcent.helium.model.hotspot.Election;
 import okhttp3.OkHttpClient;
 
 /**
@@ -20,6 +21,8 @@ public class HeliumApi {
     private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
     private final AssertLocationsApi assertLocationsApi = AssertLocationsApi.getInstance();
+    private final ElectionsApi electionsApi = ElectionsApi.getInstance();
+    private final TransactionsApi transactionsApi = TransactionsApi.getInstance();
     private static final HeliumSdkClient sdkClient = new HeliumSdkClient();
 
     public HeliumApi() {
@@ -45,6 +48,8 @@ public class HeliumApi {
         dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
         assertLocationsApi.setSdkClient(sdkClient);
+        electionsApi.setSdkClient(sdkClient);
+        transactionsApi.setSdkClient(sdkClient);
     }
 
     public HotspotApi hotspots() {
@@ -78,4 +83,8 @@ public class HeliumApi {
     public OraclePricesApi oraclePrices() { return oraclePricesApi; }
 
     public AssertLocationsApi assertLocations() { return assertLocationsApi; }
+
+    public ElectionsApi elections() { return electionsApi; }
+
+    public TransactionsApi transactions() { return transactionsApi; }
 }
