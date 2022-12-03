@@ -16,4 +16,5 @@ public class UrlConstant {
     public static final String DC_BURNS_PATH = BASE_PATH + "/dc_burns";
     public static final String ELECTIONS_PATH = BASE_PATH + "/elections";
     public static final String TRANSACTIONS_PATH = BASE_PATH + "/transactions";
+    public static final String STAT_PATH = BASE_PATH + "/stats";
 }
