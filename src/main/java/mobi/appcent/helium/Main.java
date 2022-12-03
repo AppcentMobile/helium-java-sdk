@@ -14,8 +14,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.transactions()
-                            .getTransactionForHash("bUc6-LQXdR6zOBaR_8TPWlf3THCpb4wI6WPXJHJfnYw")
+                    heliumApi.elections()
+                            .getListOfElections()
                             .execute()
                             .toString()
             );
