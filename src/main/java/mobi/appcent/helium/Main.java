@@ -14,8 +14,8 @@ public class Main {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.hotspots()
-                            .getElectedHotspots()
+                    heliumApi.assertLocations()
+                            .getListOfAssertLocations()
                             .execute()
                             .toString()
             );
