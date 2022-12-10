@@ -10,14 +10,12 @@ import mobi.appcent.helium.response.city.CitiesResponse;
 public class Main {
 
     public static void main(String[] args) {
-        Gson gson = new Gson();
-
         try {
             HeliumApi heliumApi = new HeliumApi();
 
             System.out.println(
-                    heliumApi.stateChannels()
-                            .getStateChannelCloses()
+                    heliumApi.assertLocations()
+                            .getListOfAssertLocations()
                             .execute()
                             .toString()
             );

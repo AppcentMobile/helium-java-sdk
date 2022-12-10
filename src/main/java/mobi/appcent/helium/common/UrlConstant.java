@@ -15,4 +15,9 @@ public class UrlConstant {
     public static final String CHALLENGES_PATH = BASE_PATH + "/challenges";
     public static final String DC_BURNS_PATH = BASE_PATH + "/dc_burns";
     public static final String STATE_CHANNELS_PATH = BASE_PATH + "/state_channels";
+    public static final String LOCATIONS_PATH = BASE_PATH + "/locations";
+    public static final String ASSERT_LOCATIONS_PATH = BASE_PATH + "/assert_locations";
+    public static final String ELECTIONS_PATH = BASE_PATH + "/elections";
+    public static final String TRANSACTIONS_PATH = BASE_PATH + "/transactions";
+    public static final String BLOCKS_PATH = BASE_PATH + "/blocks";
 }
