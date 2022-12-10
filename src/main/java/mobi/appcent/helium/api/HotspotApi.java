@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.response.challenge.ChallengesResponse;
+import mobi.appcent.helium.response.election.ListOfElectionsResponse;
 import mobi.appcent.helium.response.hotspot.*;
 import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
@@ -326,7 +327,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
         public APIgetHotspotElectionsRequest(String address) { this.address = address; }
 
-        public HotspotElectionsResponse execute() throws IOException {
+        public ListOfElectionsResponse execute() throws IOException {
             String path = path()+"/"+address+"/elections";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -334,7 +335,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             queryParams.add(Pair.create("max_time", maxTime));
             queryParams.add(Pair.create("limit", limit));
             Call call = sdkClient.buildCall(path, HttpMethod.GET, queryParams, null, null);
-            Type type = TypeToken.get(HotspotElectionsResponse.class).getType();
+            Type type = TypeToken.get(ListOfElectionsResponse.class).getType();
             return HotspotApi.this.execute(call, type);
         }
     }
