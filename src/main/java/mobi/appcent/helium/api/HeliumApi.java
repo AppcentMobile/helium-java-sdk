@@ -20,6 +20,7 @@ public class HeliumApi {
     private final ChallengesApi challengesApi = ChallengesApi.getInstance();
     private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
+    private final LocationsApi locationsApi = LocationsApi.getInstance();
     private final AssertLocationsApi assertLocationsApi = AssertLocationsApi.getInstance();
     private final ElectionsApi electionsApi = ElectionsApi.getInstance();
     private final TransactionsApi transactionsApi = TransactionsApi.getInstance();
@@ -47,6 +48,7 @@ public class HeliumApi {
         challengesApi.setSdkClient(sdkClient);
         dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
+        locationsApi.setSdkClient(sdkClient);
         assertLocationsApi.setSdkClient(sdkClient);
         electionsApi.setSdkClient(sdkClient);
         transactionsApi.setSdkClient(sdkClient);
@@ -81,6 +83,8 @@ public class HeliumApi {
     public DCBurnsApi dcBurns() { return dcBurnsApi; }
 
     public OraclePricesApi oraclePrices() { return oraclePricesApi; }
+
+    public LocationsApi locations() { return locationsApi; }
 
     public AssertLocationsApi assertLocations() { return assertLocationsApi; }
 
