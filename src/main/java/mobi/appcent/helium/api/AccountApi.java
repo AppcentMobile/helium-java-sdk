@@ -21,11 +21,6 @@ public class AccountApi extends BaseApi implements IAccountsApi {
         return new AccountApi();
     }
 
-    @Override
-    String path() {
-        return BASE_URL + "/accounts";
-    }
-
     //region getAccounts
     @Override
     public AccountsRequest getAccounts() {

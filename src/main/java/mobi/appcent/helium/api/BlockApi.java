@@ -15,11 +15,6 @@ public class BlockApi extends BaseApi implements IBlockApi{
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/blocks";
-    }
-
-    @Override
     public HeightRequest getHeight(){
         return new HeightRequest(sdkClient);
     }

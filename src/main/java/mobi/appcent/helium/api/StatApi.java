@@ -25,11 +25,6 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/stats";
-    }
-
-    @Override
     public BlockchainStatsRequest getBlockchainStats() {
         return new BlockchainStatsRequest(sdkClient);
     }

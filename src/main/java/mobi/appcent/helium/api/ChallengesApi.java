@@ -6,10 +6,6 @@ import mobi.appcent.helium.request.challenge.ListOfChallengesReceiptRequest;
  * Created by erenalpaslan on 27.11.2022
  */
 public class ChallengesApi extends BaseApi implements IChallengesApi{
-    @Override
-    String path() {
-        return null;
-    }
 
     public static ChallengesApi getInstance() {
         return new ChallengesApi();

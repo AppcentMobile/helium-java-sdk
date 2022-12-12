@@ -12,10 +12,6 @@ public class ValidatorApi extends BaseApi implements IValidatorsApi{
     public static ValidatorApi getInstance() {
         return new ValidatorApi();
     }
-    @Override
-    String path() {
-        return BASE_URL + "/validators";
-    }
 
     @Override
     public ValidatorsRequest getValidators(){

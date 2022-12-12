@@ -25,7 +25,6 @@ public class ApiException extends Exception{
 
     public ApiException(Throwable t, String path, String httpMethod) {
         super(t);
-        this.code = code;
         this.path = path;
         this.httpMethod = httpMethod;
     }

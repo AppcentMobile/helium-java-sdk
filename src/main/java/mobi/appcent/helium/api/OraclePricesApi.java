@@ -6,10 +6,6 @@ import mobi.appcent.helium.request.oracleprices.*;
  * Created by erenalpaslan on 20.11.2022
  */
 public class OraclePricesApi extends BaseApi implements IOraclePrices{
-    @Override
-    String path() {
-        return BASE_URL + "/oracle";
-    }
 
     public static OraclePricesApi getInstance() {
         return new OraclePricesApi();

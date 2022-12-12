@@ -9,11 +9,6 @@ import mobi.appcent.helium.request.dc.DCBurnTotalsRequest;
  */
 public class DCBurnsApi extends BaseApi implements IDCBurnsApi{
 
-    @Override
-    String path() {
-        return null;
-    }
-
     public static DCBurnsApi getInstance() {
         return new DCBurnsApi();
     }

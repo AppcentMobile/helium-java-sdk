@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Map;
 
 public class HeliumSdkClient {
-    private static final String BASE_API_URL = "https://api.helium.io/v1/";
     private OkHttpClient client;
     protected static final Gson gson = new Gson();
 
@@ -22,7 +21,6 @@ public class HeliumSdkClient {
         this.client = HttpClient.client();
     }
 
-    //TODO: Override base url
     public void setOkHttpClient(OkHttpClient client) {
         if (this.client == null) {
             initOkHttpClient();

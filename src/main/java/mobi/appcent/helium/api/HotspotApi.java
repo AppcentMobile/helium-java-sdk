@@ -29,11 +29,6 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/hotspots";
-    }
-
-    @Override
     public HotspotsRequest getHotspots(){
         return new HotspotsRequest(sdkClient);
     }

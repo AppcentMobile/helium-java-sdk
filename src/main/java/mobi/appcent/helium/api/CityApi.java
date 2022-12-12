@@ -28,11 +28,6 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/cities";
-    }
-
-    @Override
     public CitiesRequest getCities(){
         return new CitiesRequest(sdkClient);
     }
