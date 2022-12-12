@@ -21,6 +21,7 @@ public class HeliumApi {
     private final DCBurnsApi dcBurnsApi = DCBurnsApi.getInstance();
     private final OraclePricesApi oraclePricesApi = OraclePricesApi.getInstance();
     private final PendingTransactionsApi pendingTransactionsApi = PendingTransactionsApi.getInstance();
+    private final StateChannelsApi stateChannelsApi = StateChannelsApi.getInstance();
     private final LocationsApi locationsApi = LocationsApi.getInstance();
     private final AssertLocationsApi assertLocationsApi = AssertLocationsApi.getInstance();
     private final ElectionsApi electionsApi = ElectionsApi.getInstance();
@@ -51,6 +52,7 @@ public class HeliumApi {
         dcBurnsApi.setSdkClient(sdkClient);
         oraclePricesApi.setSdkClient(sdkClient);
         pendingTransactionsApi.setSdkClient(sdkClient);
+        stateChannelsApi.setSdkClient(sdkClient);
         locationsApi.setSdkClient(sdkClient);
         assertLocationsApi.setSdkClient(sdkClient);
         electionsApi.setSdkClient(sdkClient);
@@ -88,6 +90,8 @@ public class HeliumApi {
     public OraclePricesApi oraclePrices() { return oraclePricesApi; }
 
     public PendingTransactionsApi pendingTransactions() { return pendingTransactionsApi; }
+
+    public StateChannelsApi stateChannels() { return stateChannelsApi; }
 
     public LocationsApi locations() { return locationsApi; }
 
