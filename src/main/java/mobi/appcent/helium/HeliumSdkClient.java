@@ -22,7 +22,7 @@ public class HeliumSdkClient {
     }
 
     public void setOkHttpClient(OkHttpClient client) {
-        if (this.client == null) {
+        if (client == null) {
             initOkHttpClient();
         }else {
             this.client = client;
