@@ -2,6 +2,8 @@ package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.httpClient.HttpMethod;
+import mobi.appcent.helium.request.stat.BlockchainStatsRequest;
+import mobi.appcent.helium.request.stat.TokenSupplyRequest;
 import mobi.appcent.helium.response.block.BlockchainStatsResponse;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.response.stat.TokenSupplyResponse;
@@ -27,44 +29,12 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    public APIgetBlockchainStatsRequest getBlockchainStats() throws IOException {
-        return new APIgetBlockchainStatsRequest();
-    }
-
-    public class APIgetBlockchainStatsRequest {
-
-        public APIgetBlockchainStatsRequest() {}
-
-        public BlockchainStatsResponse execute() throws IOException {
-            Call call = sdkClient.buildCall(path(), HttpMethod.GET, Collections.emptyList(), null, null);
-            Type type = TypeToken.get(BlockchainStatsResponse.class).getType();
-            return StatApi.this.execute(call, type);
-        }
+    public BlockchainStatsRequest getBlockchainStats() throws IOException {
+        return new BlockchainStatsRequest(sdkClient);
     }
 
     @Override
-    public APIgetTokenSupplyRequest getTokenSupply() throws IOException {
-        return new APIgetTokenSupplyRequest();
-    }
-
-    public class APIgetTokenSupplyRequest {
-
-        private String format;
-
-        public APIgetTokenSupplyRequest() {}
-
-        public APIgetTokenSupplyRequest format(String format) {
-            this.format = format;
-            return this;
-        }
-
-        public TokenSupplyResponse execute() throws IOException {
-            String path = path() + "/token_supply";
-            ArrayList<Pair> queryParams = new ArrayList<>();
-            queryParams.add(Pair.create("format", format));
-            Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
-            Type type = TypeToken.get(TokenSupplyResponse.class).getType();
-            return StatApi.this.execute(call, type);
-        }
+    public TokenSupplyRequest getTokenSupply() throws IOException {
+        return new TokenSupplyRequest(sdkClient);
     }
 }
