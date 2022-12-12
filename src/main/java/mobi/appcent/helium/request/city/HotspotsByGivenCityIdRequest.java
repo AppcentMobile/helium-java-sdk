@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.CityApi;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.hotspot.HotspotsResponse;
@@ -26,7 +27,7 @@ public class HotspotsByGivenCityIdRequest extends BaseRequest {
         this.cityId = id;
     }
 
-    public HotspotsResponse execute() throws IOException {
+    public HotspotsResponse execute() throws ApiException {
         String path = UrlConstant.CITY_PATH +"/"+cityId+"/hotspots";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(HotspotsResponse.class).getType();

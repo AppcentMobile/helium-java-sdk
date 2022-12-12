@@ -30,12 +30,12 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    public BlockchainStatsRequest getBlockchainStats() throws ApiException {
+    public BlockchainStatsRequest getBlockchainStats() {
         return new BlockchainStatsRequest(sdkClient);
     }
 
     @Override
-    public TokenSupplyRequest getTokenSupply() throws ApiException {
+    public TokenSupplyRequest getTokenSupply() {
         return new TokenSupplyRequest(sdkClient);
     }
 }

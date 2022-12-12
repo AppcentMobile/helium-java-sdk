@@ -33,17 +33,17 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    public CitiesRequest getCities() throws ApiException {
+    public CitiesRequest getCities(){
         return new CitiesRequest(sdkClient);
     }
 
     @Override
-    public CityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId) throws ApiException {
+    public CityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId){
         return new CityByGivenCityIdRequest(sdkClient, cityId);
     }
 
     @Override
-    public HotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId) throws ApiException {
+    public HotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId){
         return new HotspotsByGivenCityIdRequest(sdkClient, cityId);
     }
 }

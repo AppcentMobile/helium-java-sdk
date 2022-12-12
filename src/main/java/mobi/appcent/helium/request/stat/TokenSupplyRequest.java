@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.StatApi;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -31,7 +32,7 @@ public class TokenSupplyRequest extends BaseRequest {
         return this;
     }
 
-    public TokenSupplyResponse execute() throws IOException {
+    public TokenSupplyResponse execute() throws ApiException {
         String path = UrlConstant.STAT_PATH + "/token_supply";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create("format", format));

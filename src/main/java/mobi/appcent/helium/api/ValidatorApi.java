@@ -18,67 +18,67 @@ public class ValidatorApi extends BaseApi implements IValidatorsApi{
     }
 
     @Override
-    public ValidatorsRequest getValidators()throws ApiException{
+    public ValidatorsRequest getValidators(){
         return new ValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ValidatorForAddressRequest getValidatorForAddress(String address) throws ApiException{
+    public ValidatorForAddressRequest getValidatorForAddress(String address) {
         return new ValidatorForAddressRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorsForNameRequest getValidatorsForName(String name)throws ApiException{
+    public ValidatorsForNameRequest getValidatorsForName(String name){
         return new ValidatorsForNameRequest(sdkClient, name);
     }
 
     @Override
-    public SearchValidatorsByNameRequest searchValidatorsByName()throws ApiException{
+    public SearchValidatorsByNameRequest searchValidatorsByName(){
         return new SearchValidatorsByNameRequest(sdkClient);
     }
 
     @Override
-    public ValidatorRolesRequest getValidatorRoles(String address)throws ApiException{
+    public ValidatorRolesRequest getValidatorRoles(String address){
         return new ValidatorRolesRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address)throws ApiException{
+    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address){
         return new ValidatorRolesCountsRequest(sdkClient, address);
     }
 
     @Override
-    public StatsForValidatorsRequest getStatsForValidators()throws ApiException{
+    public StatsForValidatorsRequest getStatsForValidators(){
         return new StatsForValidatorsRequest(sdkClient);
     }
 
     @Override
-    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators()throws ApiException{
+    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators(){
         return new CurrentlyElectedValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height)throws ApiException{
+    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height){
         return new ElectedValidatorsAtBlockRequest(sdkClient, height);
     }
 
     @Override
-    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash)throws ApiException{
+    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash){
         return new ElectedValidatorsInElectionRequest(sdkClient, hash);
     }
 
     @Override
-    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime)throws ApiException{
+    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime){
         return new RewardsForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime)throws ApiException{
+    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime){
         return new RewardTotalForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime)throws ApiException{
+    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime){
         return new RewardTotalForAllValidatorsRequest(sdkClient, address, minTime, maxTime);
     }
 }

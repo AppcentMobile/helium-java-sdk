@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.HotspotApi;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -32,7 +33,7 @@ public class HotspotsRolesCountRequest extends BaseRequest {
         return this;
     }
 
-    public HotspotsRolesCountResponse execute() throws IOException {
+    public HotspotsRolesCountResponse execute() throws ApiException {
         String path = UrlConstant.HOTSPOTS_PATH +"/"+address+"/roles/count";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create("filter_types", filterTypes));

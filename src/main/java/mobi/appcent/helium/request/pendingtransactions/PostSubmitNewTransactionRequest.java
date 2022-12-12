@@ -7,6 +7,7 @@ import lombok.Setter;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.HeaderConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.pendingTransaction.SubmitTransactionResponse;
@@ -29,7 +30,7 @@ public class PostSubmitNewTransactionRequest extends BaseRequest {
     private final String txn;
     private final String hash;
 
-    public SubmitTransactionResponse execute() throws IOException {
+    public SubmitTransactionResponse execute() throws ApiException {
         String path = UrlConstant.PENDING_TRANSACTION_PATH + "/" + hash;
         SubmitTransactionRequest requestBody = new SubmitTransactionRequest(txn);
         Map<String, String> headers = new HashMap<>();

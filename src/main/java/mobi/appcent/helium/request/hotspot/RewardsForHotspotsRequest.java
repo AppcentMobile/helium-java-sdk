@@ -5,6 +5,7 @@ import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.HotspotApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -43,7 +44,7 @@ public class RewardsForHotspotsRequest extends BaseRequest {
         this.client = client;
         this.address = address; }
 
-    public HotspotRewardResponse execute() throws IOException {
+    public HotspotRewardResponse execute() throws ApiException {
         String path = UrlConstant.HOTSPOTS_PATH +"/"+address+"/rewards";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));

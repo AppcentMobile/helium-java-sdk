@@ -8,6 +8,7 @@ import lombok.Setter;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.PendingTransactionsApi;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.pendingTransaction.PendingTransactionsStatusResponse;
@@ -27,7 +28,7 @@ public class PendingTransactionsStatusRequest extends BaseRequest {
     private final HeliumSdkClient client;
     private final String hash;
 
-    public PendingTransactionsStatusResponse execute() throws IOException {
+    public PendingTransactionsStatusResponse execute() throws ApiException {
         String path = UrlConstant.PENDING_TRANSACTION_PATH + "/" + hash;
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(PendingTransactionsStatusResponse.class).getType();

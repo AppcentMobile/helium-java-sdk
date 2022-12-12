@@ -3,6 +3,7 @@ package mobi.appcent.helium.request.hotspot;
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.hotspot.HotspotResponse;
@@ -28,7 +29,7 @@ public class HotspotByGivenAddressRequest extends BaseRequest {
         return this;
     }
 
-    public HotspotResponse execute() throws IOException {
+    public HotspotResponse execute() throws ApiException {
         String path = UrlConstant.HOTSPOTS_PATH  + "/" + address;
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(HotspotResponse.class).getType();

@@ -20,38 +20,38 @@ public class BlockApi extends BaseApi implements IBlockApi{
     }
 
     @Override
-    public HeightRequest getHeight() throws ApiException {
+    public HeightRequest getHeight(){
         return new HeightRequest(sdkClient);
     }
 
     @Override
-    public BlockStatsRequest getBlockStats() throws ApiException {
+    public BlockStatsRequest getBlockStats(){
         return new BlockStatsRequest(sdkClient);
     }
 
 
     @Override
-    public BlockDescriptionsRequest getBlockDescriptions() throws ApiException {
+    public BlockDescriptionsRequest getBlockDescriptions(){
         return new BlockDescriptionsRequest(sdkClient);
     }
 
     @Override
-    public BlockByGivenHeightRequest getBlockByGivenHeight(@NotNull Integer height) throws ApiException {
+    public BlockByGivenHeightRequest getBlockByGivenHeight(@NotNull Integer height){
         return new BlockByGivenHeightRequest(sdkClient, height);
     }
 
     @Override
-    public BlockTransactionsByGivenHeightRequest getBlockTransactionsByGivenHeight(@NotNull Integer height) throws ApiException {
+    public BlockTransactionsByGivenHeightRequest getBlockTransactionsByGivenHeight(@NotNull Integer height){
         return new BlockTransactionsByGivenHeightRequest(sdkClient, height);
     }
 
     @Override
-    public BlockByGivenHashRequest getBlockByGivenHash(@NotNull String hash) throws ApiException {
+    public BlockByGivenHashRequest getBlockByGivenHash(@NotNull String hash){
         return new BlockByGivenHashRequest(sdkClient, hash);
     }
 
     @Override
-    public BlockTransactionsByGivenHashRequest getBlockTransactionsByGivenHash(@NotNull String hash) throws ApiException {
+    public BlockTransactionsByGivenHashRequest getBlockTransactionsByGivenHash(@NotNull String hash){
         return new BlockTransactionsByGivenHashRequest(sdkClient, hash);
     }
 

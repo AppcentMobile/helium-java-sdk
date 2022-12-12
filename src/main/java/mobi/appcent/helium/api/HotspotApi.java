@@ -34,87 +34,87 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public HotspotsRequest getHotspots() throws ApiException {
+    public HotspotsRequest getHotspots(){
         return new HotspotsRequest(sdkClient);
     }
 
     @Override
-    public HotspotByGivenAddressRequest getHotspotByGivenAddress() throws ApiException {
+    public HotspotByGivenAddressRequest getHotspotByGivenAddress(){
         return new HotspotByGivenAddressRequest(sdkClient);
     }
 
     @Override
-    public HotspotsByGivenNameRequest getHotspotsByGivenName(String name) throws ApiException {
+    public HotspotsByGivenNameRequest getHotspotsByGivenName(String name){
         return new HotspotsByGivenNameRequest(sdkClient, name);
     }
 
     @Override
-    public SearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws ApiException {
+    public SearchHotspotsByGivenNameRequest searchHotspotsByGivenName(){
         return new SearchHotspotsByGivenNameRequest(sdkClient);
     }
 
     @Override
-    public SearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws ApiException {
+    public SearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance(){
         return new SearchHotspotsByLocationDistanceRequest(sdkClient);
     }
 
     @Override
-    public SearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws ApiException {
+    public SearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox(){
         return new SearchHotspotsByLocationBoxRequest(sdkClient);
     }
 
     @Override
-    public HotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws ApiException {
+    public HotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index){
         return new HotspotsByGivenH3IndexRequest(sdkClient, index);
     }
 
     @Override
-    public HotspotRolesRequest getHotspotRoles(@NotNull String address) throws ApiException {
+    public HotspotRolesRequest getHotspotRoles(@NotNull String address){
         return new HotspotRolesRequest(sdkClient, address);
     }
 
     @Override
-    public HotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws ApiException {
+    public HotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address){
         return new HotspotsRolesCountRequest(sdkClient, address);
     }
 
     @Override
-    public HotspotElectionsRequest getHotspotElections(@NotNull String address) throws ApiException {
+    public HotspotElectionsRequest getHotspotElections(@NotNull String address){
         return new HotspotElectionsRequest(sdkClient, address);
     }
 
     @Override
-    public ElectedHotspotsRequest getElectedHotspots() throws ApiException {
+    public ElectedHotspotsRequest getElectedHotspots(){
         return new ElectedHotspotsRequest(sdkClient);
     }
 
     @Override
-    public HotspotChallengesRequest getHotspotChallanges(@NotNull String address) throws ApiException {
+    public HotspotChallengesRequest getHotspotChallanges(@NotNull String address){
         return new HotspotChallengesRequest(sdkClient, address);
     }
 
     @Override
-    public RewardsForHotspotsRequest getRewardsForHotspot(@NotNull String address) throws ApiException {
+    public RewardsForHotspotsRequest getRewardsForHotspot(@NotNull String address){
         return new RewardsForHotspotsRequest(sdkClient, address);
     }
 
     @Override
-    public RewardsForHotspotsByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws ApiException {
+    public RewardsForHotspotsByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address){
         return new RewardsForHotspotsByGivenRewardBlockRequest(sdkClient, address);
     }
 
     @Override
-    public TotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws ApiException {
+    public TotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address){
         return new TotalRewardForHotspotRequest(sdkClient, address);
     }
 
     @Override
-    public WitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws ApiException {
+    public WitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address){
         return new WitnessesForHotspotRequest(sdkClient, address);
     }
 
     @Override
-    public WitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws ApiException {
+    public WitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address){
         return new WitnessedForHotspotRequest(sdkClient, address);
     }
 
