@@ -1,7 +1,6 @@
 package mobi.appcent.helium.request;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import okhttp3.Call;
 import okhttp3.Response;
@@ -50,5 +49,16 @@ public abstract class BaseRequest {
                 throw (e);
             }
         }
+    }
+
+    public static JsonObject convertToJsonArray(JsonObject obj, JsonElement data) {
+        JsonArray arr = new JsonArray();
+        arr.add(data.getAsJsonObject());
+        obj.add("data", arr);
+        return obj;
+    }
+
+    public static Boolean isJsonArray(JsonElement element) {
+        return element.isJsonArray();
     }
 }

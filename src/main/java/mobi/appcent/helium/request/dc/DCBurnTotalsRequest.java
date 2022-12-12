@@ -71,15 +71,4 @@ public class DCBurnTotalsRequest extends BaseRequest {
         }
         return null;
     }
-
-    private static JsonObject convertToJsonArray(JsonObject obj, JsonElement data) {
-        JsonArray arr = new JsonArray();
-        arr.add(data.getAsJsonObject());
-        obj.add("data", arr);
-        return obj;
-    }
-
-    public static Boolean isJsonArray(JsonElement element) {
-        return element.isJsonArray();
-    }
 }
