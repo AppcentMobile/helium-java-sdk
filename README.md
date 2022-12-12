@@ -7,7 +7,7 @@ A Java SDK for [Helium Blockchain APIs](https://docs.helium.com/api/blockchain/i
 
 Easily integrate to Helium Blockhain API in your java applications for `Android`, `Backend`, `Console`...
 
-The SDK is based on `Java 1.8` and makes use of the following dependencies:
+The SDK is based on `Java 1.8` uses the following dependencies:
 
 * OkHttp3
 * Gson
@@ -15,6 +15,8 @@ The SDK is based on `Java 1.8` and makes use of the following dependencies:
 # Usage
 
 ## Installation
+
+> **TODO**: Update here after GithubRepository integration.
 
 The SDK is not available on any maven repository yet. Currently only way to include it in your projects is by copying the source code. 
 
@@ -43,9 +45,16 @@ HotspotResponse resp = heliumApi.hotspots().searchHotspotsByLocationBox()
 
 ## Pagination
 
-Some of the APIs return results in pages. In order to fetch multiple pages you should transfer previous response's `cursor` property to the next request. Currently this is responsibility of the SDK user. 
+Some of the APIs return results in pages. In order to fetch multiple pages you should transfer previous response's `cursor` property to the next request. Currently, this is responsibility of the SDK user. 
 
-//TODO add example.
+```java
+HeliumApi heliumApi = new HeliumApi();
+
+HotspotsResponse firstPage = heliumApi.hotspots().getHotspots().execute();
+HotspotsResponse secondPage = heliumApi.hotspots().getHotspots().cursor(firstPage.cursor).execute();
+
+System.out.println(secondPage.data);
+```
 
 # Contributing
 
@@ -55,7 +64,7 @@ We value all kind of contributions and try to be as welcoming as possible. Pleas
 
 Maven is used as the build tool. Currently build process is quite simple so not sharing much details here.
 
-## Branch Model & Versioning
+## Branch Model & Versioning
 
 We use [GitFlow Workflow](https://nvie.com/posts/a-successful-git-branching-model/) and [Semantic Versioning](https://semver.org/).
 
