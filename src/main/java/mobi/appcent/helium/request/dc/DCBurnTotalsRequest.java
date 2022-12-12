@@ -8,14 +8,15 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.account.AccountsResponse;
-import mobi.appcent.helium.response.dc.DCBurnTotalResponse;
 import mobi.appcent.helium.response.dc.DCBurnTotalsResponse;
 import okhttp3.Call;
 import okhttp3.Response;
+
+import mobi.appcent.helium.exception.ApiException;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -45,7 +46,7 @@ public class DCBurnTotalsRequest extends BaseRequest {
         return this;
     }
 
-    public DCBurnTotalsResponse execute() throws IOException {
+    public DCBurnTotalsResponse execute() throws ApiException {
         String path = UrlConstant.DC_BURNS_PATH + "/sum";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));
@@ -57,7 +58,7 @@ public class DCBurnTotalsRequest extends BaseRequest {
     }
 
     @Override
-    public <T> T handleResponse(Response response, Type returnType) throws IOException {
+    public <T> T handleResponse(Response response, Type returnType) throws IOException, ApiException {
         if(response.isSuccessful()) {
             if (response.body() != null) {
                 JsonObject obj = new JsonParser().parse(response.body().string()).getAsJsonObject();

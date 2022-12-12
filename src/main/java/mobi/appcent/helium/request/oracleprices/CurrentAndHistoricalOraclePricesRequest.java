@@ -10,7 +10,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.oracle.CurrentAndHistoricalOraclePricesResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class CurrentAndHistoricalOraclePricesRequest extends BaseRequest {
         return this;
     }
 
-    public CurrentAndHistoricalOraclePricesResponse execute() throws IOException {
+    public CurrentAndHistoricalOraclePricesResponse execute() throws ApiException {
         String path = UrlConstant.ORACLE_PRICES_PATH + "/prices";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MAX_BLOCK, maxBlock));

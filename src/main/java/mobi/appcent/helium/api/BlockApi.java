@@ -3,7 +3,7 @@ package mobi.appcent.helium.api;
 import mobi.appcent.helium.request.block.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 
 /**
  * Created by erenalpaslan on 28.10.2022
@@ -20,38 +20,38 @@ public class BlockApi extends BaseApi implements IBlockApi{
     }
 
     @Override
-    public HeightRequest getHeight() throws IOException {
+    public HeightRequest getHeight() throws ApiException {
         return new HeightRequest(sdkClient);
     }
 
     @Override
-    public BlockStatsRequest getBlockStats() throws IOException {
+    public BlockStatsRequest getBlockStats() throws ApiException {
         return new BlockStatsRequest(sdkClient);
     }
 
 
     @Override
-    public BlockDescriptionsRequest getBlockDescriptions() throws IOException {
+    public BlockDescriptionsRequest getBlockDescriptions() throws ApiException {
         return new BlockDescriptionsRequest(sdkClient);
     }
 
     @Override
-    public BlockByGivenHeightRequest getBlockByGivenHeight(@NotNull Integer height) throws IOException {
+    public BlockByGivenHeightRequest getBlockByGivenHeight(@NotNull Integer height) throws ApiException {
         return new BlockByGivenHeightRequest(sdkClient, height);
     }
 
     @Override
-    public BlockTransactionsByGivenHeightRequest getBlockTransactionsByGivenHeight(@NotNull Integer height) throws IOException {
+    public BlockTransactionsByGivenHeightRequest getBlockTransactionsByGivenHeight(@NotNull Integer height) throws ApiException {
         return new BlockTransactionsByGivenHeightRequest(sdkClient, height);
     }
 
     @Override
-    public BlockByGivenHashRequest getBlockByGivenHash(@NotNull String hash) throws IOException {
+    public BlockByGivenHashRequest getBlockByGivenHash(@NotNull String hash) throws ApiException {
         return new BlockByGivenHashRequest(sdkClient, hash);
     }
 
     @Override
-    public BlockTransactionsByGivenHashRequest getBlockTransactionsByGivenHash(@NotNull String hash) throws IOException {
+    public BlockTransactionsByGivenHashRequest getBlockTransactionsByGivenHash(@NotNull String hash) throws ApiException {
         return new BlockTransactionsByGivenHashRequest(sdkClient, hash);
     }
 

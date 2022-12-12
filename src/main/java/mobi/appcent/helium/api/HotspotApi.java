@@ -1,6 +1,7 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.response.challenge.ChallengesResponse;
@@ -10,7 +11,7 @@ import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -30,7 +31,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsRequest getHotspots() throws IOException {
+    public APIgetHotspotsRequest getHotspots() throws ApiException {
         return new APIgetHotspotsRequest();
     }
 
@@ -49,7 +50,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotsResponse execute() throws IOException {
+        public HotspotsResponse execute() throws ApiException {
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
             queryParams.add(Pair.create("filter_modes", filterModes));
@@ -60,7 +61,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotByGivenAdressRequest getHotspotByGivenAdress() throws IOException {
+    public APIgetHotspotByGivenAdressRequest getHotspotByGivenAdress() throws ApiException {
         return new APIgetHotspotByGivenAdressRequest();
     }
 
@@ -72,7 +73,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/"+address;
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
@@ -81,7 +82,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsByGivenNameRequest getHotspotsByGivenName() throws IOException {
+    public APIgetHotspotsByGivenNameRequest getHotspotsByGivenName() throws ApiException {
         return new APIgetHotspotsByGivenNameRequest();
     }
 
@@ -93,7 +94,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/name/"+name;
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
@@ -102,7 +103,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws IOException {
+    public APIsearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws ApiException {
         return new APIsearchHotspotsByGivenNameRequest();
     }
 
@@ -114,7 +115,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/name";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("search", name));
@@ -125,7 +126,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws IOException {
+    public APIsearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws ApiException {
         return new APIsearchHotspotsByLocationDistanceRequest();
     }
 
@@ -148,7 +149,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             this.distance = distance;
             return this;
         }
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/location/distance";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("lat", lat));
@@ -161,7 +162,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIsearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws IOException {
+    public APIsearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws ApiException {
         return new APIsearchHotspotsByLocationBoxRequest();
     }
 
@@ -190,7 +191,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             this.nelon = nelon;
             return this;
         }
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/location/box";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("swlat", swlat));
@@ -204,7 +205,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws IOException {
+    public APIgetHotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws ApiException {
         return new APIgetHotspotsByGivenH3IndexRequest(index);
     }
 
@@ -212,7 +213,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         private String index;
         public APIgetHotspotsByGivenH3IndexRequest(String index) { this.index = index; }
 
-        public HotspotResponse execute() throws IOException {
+        public HotspotResponse execute() throws ApiException {
             String path = path()+"/hex/"+index;
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotResponse.class).getType();
@@ -221,7 +222,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotRolesRequest getHotspotRoles(@NotNull String address) throws IOException {
+    public APIgetHotspotRolesRequest getHotspotRoles(@NotNull String address) throws ApiException {
         return new APIgetHotspotRolesRequest(address);
     }
 
@@ -257,7 +258,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
 
 
-        public HotspotRolesResponse execute() throws IOException {
+        public HotspotRolesResponse execute() throws ApiException {
             String path = path()+"/"+address+"/roles";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -272,7 +273,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws IOException {
+    public APIgetHotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws ApiException {
         return new APIgetHotspotsRolesCountRequest(address);
     }
 
@@ -286,7 +287,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotsRolesCountResponse execute() throws IOException {
+        public HotspotsRolesCountResponse execute() throws ApiException {
             String path = path()+"/"+address+"/roles/count";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("filter_types", filterTypes));
@@ -297,7 +298,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotElectionsRequest getHotspotElections(@NotNull String address) throws IOException {
+    public APIgetHotspotElectionsRequest getHotspotElections(@NotNull String address) throws ApiException {
         return new APIgetHotspotElectionsRequest(address);
     }
 
@@ -327,7 +328,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
         public APIgetHotspotElectionsRequest(String address) { this.address = address; }
 
-        public ListOfElectionsResponse execute() throws IOException {
+        public ListOfElectionsResponse execute() throws ApiException {
             String path = path()+"/"+address+"/elections";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -341,14 +342,14 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetElectedHotspotsRequest getElectedHotspots() throws IOException {
+    public APIgetElectedHotspotsRequest getElectedHotspots() throws ApiException {
         return new APIgetElectedHotspotsRequest();
     }
 
     public class APIgetElectedHotspotsRequest {
         public APIgetElectedHotspotsRequest() {  }
 
-        public HotspotsResponse execute() throws IOException {
+        public HotspotsResponse execute() throws ApiException {
             String path = path()+"/elected";
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotsResponse.class).getType();
@@ -357,7 +358,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetHotspotChallangesRequest getHotspotChallanges(@NotNull String address) throws IOException {
+    public APIgetHotspotChallangesRequest getHotspotChallanges(@NotNull String address) throws ApiException {
         return new APIgetHotspotChallangesRequest(address);
     }
 
@@ -387,7 +388,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
         public APIgetHotspotChallangesRequest(String address) { this.address = address; }
 
-        public ChallengesResponse execute() throws IOException {
+        public ChallengesResponse execute() throws ApiException {
             String path = path()+"/"+address+"/challenges";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -401,7 +402,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetRewardsForHotspotRequest getRewardsForHotspot(@NotNull String address) throws IOException {
+    public APIgetRewardsForHotspotRequest getRewardsForHotspot(@NotNull String address) throws ApiException {
         return new APIgetRewardsForHotspotRequest(address);
     }
 
@@ -427,7 +428,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
         }
         public APIgetRewardsForHotspotRequest(String address) { this.address = address; }
 
-        public HotspotRewardResponse execute() throws IOException {
+        public HotspotRewardResponse execute() throws ApiException {
             String path = path()+"/"+address+"/rewards";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("cursor", cursor));
@@ -441,7 +442,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
     //TODO Docs doesn't have block param
     @Override
-    public APIgetRewardsForHotspotByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException {
+    public APIgetRewardsForHotspotByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws ApiException {
         return new APIgetRewardsForHotspotByGivenRewardBlockRequest(address);
     }
 
@@ -450,7 +451,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
         public APIgetRewardsForHotspotByGivenRewardBlockRequest(String address) { this.address = address; }
 
-        public HotspotRewardResponse execute() throws IOException {
+        public HotspotRewardResponse execute() throws ApiException {
             String path = path()+"/"+address+"/rewards/";
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotRewardResponse.class).getType();
@@ -460,7 +461,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
     //TODO actual response is different from docs
     @Override
-    public APIgetTotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws IOException {
+    public APIgetTotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws ApiException {
         return new APIgetTotalRewardForHotspotRequest(address);
     }
 
@@ -487,7 +488,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
             return this;
         }
 
-        public HotspotTotalRewardResponse execute() throws IOException {
+        public HotspotTotalRewardResponse execute() throws ApiException {
             String path = path()+"/"+address+"/rewards/sum";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("min_time", minTime));
@@ -500,7 +501,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetWitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws IOException {
+    public APIgetWitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws ApiException {
         return new APIgetWitnessesForHotspotRequest(address);
     }
 
@@ -509,7 +510,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
         public APIgetWitnessesForHotspotRequest(String address) { this.address = address; }
 
-        public HotspotsResponse execute() throws IOException {
+        public HotspotsResponse execute() throws ApiException {
             String path = path()+"/"+address+"/witnesses";
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotsResponse.class).getType();
@@ -518,7 +519,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
     }
 
     @Override
-    public APIgetWitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws IOException {
+    public APIgetWitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws ApiException {
         return new APIgetWitnessedForHotspotRequest(address);
     }
 
@@ -527,7 +528,7 @@ public class HotspotApi extends BaseApi implements IHotspotApi {
 
         public APIgetWitnessedForHotspotRequest(String address) { this.address = address; }
 
-        public HotspotsResponse execute() throws IOException {
+        public HotspotsResponse execute() throws ApiException {
             String path = path()+"/"+address+"/witnessed";
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotsResponse.class).getType();

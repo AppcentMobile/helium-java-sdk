@@ -1,6 +1,7 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.response.city.CitiesResponse;
 import mobi.appcent.helium.response.city.CityResponse;
@@ -9,7 +10,7 @@ import mobi.appcent.helium.model.Pair;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +30,7 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    public APIgetCitiesRequest getCities() throws IOException {
+    public APIgetCitiesRequest getCities() throws ApiException {
         return new APIgetCitiesRequest();
     }
 
@@ -49,7 +50,7 @@ public class CityApi extends BaseApi implements ICityApi{
             return this;
         }
 
-        public CitiesResponse execute() throws IOException {
+        public CitiesResponse execute() throws ApiException {
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("search", search));
             queryParams.add(Pair.create("cursor", cursor));
@@ -60,7 +61,7 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    public APIgetCityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId) throws IOException {
+    public APIgetCityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId) throws ApiException {
         return new APIgetCityByGivenCityIdRequest(cityId);
     }
 
@@ -72,7 +73,7 @@ public class CityApi extends BaseApi implements ICityApi{
             this.cityId = id;
         }
 
-        public CityResponse execute() throws IOException {
+        public CityResponse execute() throws ApiException {
             String path = path()+"/"+cityId;
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(CityResponse.class).getType();
@@ -81,7 +82,7 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    public APIgetHotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId) throws IOException {
+    public APIgetHotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId) throws ApiException {
         return new APIgetHotspotsByGivenCityIdRequest(cityId);
     }
 
@@ -93,7 +94,7 @@ public class CityApi extends BaseApi implements ICityApi{
             this.cityId = id;
         }
 
-        public HotspotsResponse execute() throws IOException {
+        public HotspotsResponse execute() throws ApiException {
             String path = path()+"/"+cityId+"/hotspots";
             Call call = sdkClient.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(HotspotsResponse.class).getType();

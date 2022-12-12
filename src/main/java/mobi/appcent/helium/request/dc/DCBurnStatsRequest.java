@@ -2,16 +2,13 @@ package mobi.appcent.helium.request.dc;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
-import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.account.AccountsResponse;
 import mobi.appcent.helium.response.dc.DCBurnStatsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -25,7 +22,7 @@ public class DCBurnStatsRequest extends BaseRequest {
         this.client = client;
     }
 
-    public DCBurnStatsResponse execute() throws IOException {
+    public DCBurnStatsResponse execute() throws ApiException {
         String path = UrlConstant.DC_BURNS_PATH + "/stats";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(DCBurnStatsResponse.class).getType();

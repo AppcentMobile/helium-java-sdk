@@ -1,13 +1,14 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.response.block.BlockchainStatsResponse;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.response.stat.TokenSupplyResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +28,7 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    public APIgetBlockchainStatsRequest getBlockchainStats() throws IOException {
+    public APIgetBlockchainStatsRequest getBlockchainStats() throws ApiException {
         return new APIgetBlockchainStatsRequest();
     }
 
@@ -35,7 +36,7 @@ public class StatApi extends BaseApi implements IStatApi {
 
         public APIgetBlockchainStatsRequest() {}
 
-        public BlockchainStatsResponse execute() throws IOException {
+        public BlockchainStatsResponse execute() throws ApiException {
             Call call = sdkClient.buildCall(path(), HttpMethod.GET, Collections.emptyList(), null, null);
             Type type = TypeToken.get(BlockchainStatsResponse.class).getType();
             return StatApi.this.execute(call, type);
@@ -43,7 +44,7 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    public APIgetTokenSupplyRequest getTokenSupply() throws IOException {
+    public APIgetTokenSupplyRequest getTokenSupply() throws ApiException {
         return new APIgetTokenSupplyRequest();
     }
 
@@ -58,7 +59,7 @@ public class StatApi extends BaseApi implements IStatApi {
             return this;
         }
 
-        public TokenSupplyResponse execute() throws IOException {
+        public TokenSupplyResponse execute() throws ApiException {
             String path = path() + "/token_supply";
             ArrayList<Pair> queryParams = new ArrayList<>();
             queryParams.add(Pair.create("format", format));

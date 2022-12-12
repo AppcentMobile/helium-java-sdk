@@ -2,7 +2,7 @@ package mobi.appcent.helium.api;
 
 import mobi.appcent.helium.request.validator.*;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 
 /**
  * Created by erenalpaslan on 7.11.2022
@@ -18,67 +18,67 @@ public class ValidatorApi extends BaseApi implements IValidatorsApi{
     }
 
     @Override
-    public ValidatorsRequest getValidators() throws IOException {
+    public ValidatorsRequest getValidators()throws ApiException{
         return new ValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ValidatorForAddressRequest getValidatorForAddress(String address) throws IOException {
+    public ValidatorForAddressRequest getValidatorForAddress(String address) throws ApiException{
         return new ValidatorForAddressRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorsForNameRequest getValidatorsForName(String name) throws IOException {
+    public ValidatorsForNameRequest getValidatorsForName(String name)throws ApiException{
         return new ValidatorsForNameRequest(sdkClient, name);
     }
 
     @Override
-    public SearchValidatorsByNameRequest searchValidatorsByName() throws IOException {
+    public SearchValidatorsByNameRequest searchValidatorsByName()throws ApiException{
         return new SearchValidatorsByNameRequest(sdkClient);
     }
 
     @Override
-    public ValidatorRolesRequest getValidatorRoles(String address) throws IOException {
+    public ValidatorRolesRequest getValidatorRoles(String address)throws ApiException{
         return new ValidatorRolesRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address) throws IOException {
+    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address)throws ApiException{
         return new ValidatorRolesCountsRequest(sdkClient, address);
     }
 
     @Override
-    public StatsForValidatorsRequest getStatsForValidators() throws IOException {
+    public StatsForValidatorsRequest getStatsForValidators()throws ApiException{
         return new StatsForValidatorsRequest(sdkClient);
     }
 
     @Override
-    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators() throws IOException {
+    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators()throws ApiException{
         return new CurrentlyElectedValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height) throws IOException {
+    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height)throws ApiException{
         return new ElectedValidatorsAtBlockRequest(sdkClient, height);
     }
 
     @Override
-    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash) throws IOException {
+    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash)throws ApiException{
         return new ElectedValidatorsInElectionRequest(sdkClient, hash);
     }
 
     @Override
-    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime) throws IOException {
+    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime)throws ApiException{
         return new RewardsForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime) throws IOException {
+    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime)throws ApiException{
         return new RewardTotalForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime) throws IOException {
+    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime)throws ApiException{
         return new RewardTotalForAllValidatorsRequest(sdkClient, address, minTime, maxTime);
     }
 }

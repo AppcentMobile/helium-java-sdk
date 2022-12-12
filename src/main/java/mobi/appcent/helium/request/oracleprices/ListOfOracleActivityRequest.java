@@ -8,13 +8,11 @@ import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.oracle.ListOfOracleActivityResponse;
-import mobi.appcent.helium.response.oracle.OraclePriceResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by erenalpaslan on 26.11.2022
@@ -51,7 +49,7 @@ public class ListOfOracleActivityRequest extends BaseRequest {
         return this;
     }
 
-    public ListOfOracleActivityResponse execute() throws IOException {
+    public ListOfOracleActivityResponse execute() throws ApiException {
         String path = UrlConstant.ORACLE_PRICES_PATH + "/activity";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));

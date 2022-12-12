@@ -8,7 +8,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.ouis.OuisResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -22,7 +22,7 @@ public class LastAssignedOUIRequest extends BaseRequest {
         this.client = client;
     }
 
-    public OuisResponse execute() throws IOException {
+    public OuisResponse execute() throws ApiException {
         String path = UrlConstant.OUIS_PATH + "/last";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(OuisResponse.class).getType();

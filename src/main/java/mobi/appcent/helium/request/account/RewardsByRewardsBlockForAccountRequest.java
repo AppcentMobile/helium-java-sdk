@@ -2,14 +2,13 @@ package mobi.appcent.helium.request.account;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.AccountApi;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -27,7 +26,7 @@ public class RewardsByRewardsBlockForAccountRequest extends BaseRequest {
         this.block = block;
     }
 
-    public HotspotRewardResponse execute() throws IOException {
+    public HotspotRewardResponse execute() throws ApiException {
         String path = UrlConstant.ACCOUNTS_PATH + "/" + address + "/rewards/" + block;
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(HotspotRewardResponse.class).getType();

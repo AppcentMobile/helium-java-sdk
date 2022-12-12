@@ -10,7 +10,7 @@ import mobi.appcent.helium.response.validator.ValidatorsRewardsTotalResponse;
 import mobi.appcent.helium.request.BaseRequest;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class RewardTotalForValidatorRequest extends BaseRequest {
         return this;
     }
 
-    public ValidatorsRewardsTotalResponse execute() throws IOException {
+    public ValidatorsRewardsTotalResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + "/" + address + "/rewards/sum";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MAX_TIME, maxTime));

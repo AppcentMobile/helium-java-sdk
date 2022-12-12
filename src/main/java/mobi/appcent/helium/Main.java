@@ -2,10 +2,12 @@ package mobi.appcent.helium;
 
 import com.google.gson.Gson;
 import mobi.appcent.helium.api.HeliumApi;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.model.*;
 import mobi.appcent.helium.model.account.Account;
 import mobi.appcent.helium.response.account.AccountsResponse;
 import mobi.appcent.helium.response.city.CitiesResponse;
+import mobi.appcent.helium.response.validator.ValidatorsResponse;
 
 public class Main {
 
@@ -13,16 +15,12 @@ public class Main {
         try {
             HeliumApi heliumApi = new HeliumApi();
 
-            System.out.println(
-                    heliumApi.assertLocations()
-                            .getListOfAssertLocations()
-                            .execute()
-                            .toString()
-            );
-
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ValidatorsResponse resp = heliumApi.validators()
+                    .getValidators()
+                    .execute();
+            System.out.println(resp.toString());
+        } catch (ApiException e) {
+            System.out.println(e);
         }
 
     }

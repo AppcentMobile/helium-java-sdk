@@ -10,7 +10,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.account.AccountRolesCountResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -32,7 +32,7 @@ public class ValidatorRolesCountsRequest extends BaseRequest {
         return this;
     }
 
-    public AccountRolesCountResponse execute() throws IOException {
+    public AccountRolesCountResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + address + "/roles/count";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.FILTER_TYPES, filterTypes));

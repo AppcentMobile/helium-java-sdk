@@ -10,7 +10,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.ouis.ListOfOUIsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class ListOfOUIsRequest extends BaseRequest {
         return this;
     }
 
-    public ListOfOUIsResponse execute() throws IOException {
+    public ListOfOUIsResponse execute() throws ApiException {
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
         Call call = client.buildCall(UrlConstant.OUIS_PATH, HttpMethod.GET, queryParams, null, null);

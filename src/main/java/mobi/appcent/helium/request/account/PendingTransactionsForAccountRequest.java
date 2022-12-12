@@ -2,7 +2,6 @@ package mobi.appcent.helium.request.account;
 
 import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
-import mobi.appcent.helium.api.AccountApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
@@ -11,7 +10,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.account.AccountTransactionsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -34,7 +33,7 @@ public class PendingTransactionsForAccountRequest extends BaseRequest {
         return this;
     }
 
-    public AccountTransactionsResponse execute() throws IOException {
+    public AccountTransactionsResponse execute() throws ApiException {
         String path = UrlConstant.ACCOUNTS_PATH + "/" + address + "/pending_transactions";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
