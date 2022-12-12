@@ -1,7 +1,7 @@
 # helium-java-sdk
 
 > **Warning**
-> This project is at a very very early stage and not ready to be used in the wild.
+> This project is at a very early stage and not ready to be used in the wild.
 
 A Java SDK for [Helium Blockchain APIs](https://docs.helium.com/api/blockchain/introduction/). 
 
@@ -10,7 +10,7 @@ Easily integrate to Helium Blockhain API in your java applications for `Android`
 The SDK is based on `Java 1.8` uses the following dependencies:
 
 * OkHttp3
-* Gson
+* Gson  
 
 # Usage
 
@@ -29,6 +29,8 @@ Create an instance by calling the constructor of `HeliumApi`.
 ```java
 HeliumApi heliumApi = new HeliumApi();
 ```
+
+If you need more configuration, use `HeliumApi(OkHttpClient client)`.
 
 ## Accessing APIs in a Type-Safe way
 
