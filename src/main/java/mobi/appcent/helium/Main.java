@@ -1,7 +1,8 @@
 package mobi.appcent.helium;
 
 import mobi.appcent.helium.api.HeliumApi;
-
+import mobi.appcent.helium.exception.ApiException;
+import mobi.appcent.helium.response.validator.ValidatorsResponse;
 
 public class Main {
 
@@ -9,13 +10,12 @@ public class Main {
         try {
             HeliumApi heliumApi = new HeliumApi();
             System.out.println(
-                    heliumApi.assertLocations()
-                            .getListOfAssertLocations()
+                    heliumApi.hotspots()
+                            .getHotspots()
                             .execute()
-                            .toString()
             );
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (ApiException e) {
+            System.out.println(e);
         }
 
     }

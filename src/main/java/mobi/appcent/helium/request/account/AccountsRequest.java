@@ -4,13 +4,14 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.account.AccountsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class AccountsRequest extends BaseRequest {
         return this;
     }
 
-    public AccountsResponse execute() throws IOException {
+    public AccountsResponse execute() throws ApiException {
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
         Call call = client.buildCall(UrlConstant.ACCOUNTS_PATH, HttpMethod.GET, queryParams, null, null);

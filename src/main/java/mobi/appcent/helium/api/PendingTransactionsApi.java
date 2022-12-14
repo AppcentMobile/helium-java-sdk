@@ -7,10 +7,6 @@ import mobi.appcent.helium.request.pendingtransactions.PostSubmitNewTransactionR
  * Created by erenalpaslan on 20.11.2022
  */
 public class PendingTransactionsApi extends BaseApi implements IPendingTransactions {
-    @Override
-    String path() {
-        return BASE_URL + "/pending_transactions";
-    }
 
     public static PendingTransactionsApi getInstance() {
         return new PendingTransactionsApi();

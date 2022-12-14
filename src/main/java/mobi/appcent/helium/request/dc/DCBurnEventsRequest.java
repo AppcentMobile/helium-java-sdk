@@ -8,13 +8,11 @@ import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.dc.DCBurnEventsResponse;
-import mobi.appcent.helium.response.dc.DCBurnStatsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Created by erenalpaslan on 27.11.2022
@@ -32,7 +30,7 @@ public class DCBurnEventsRequest extends BaseRequest {
         return this;
     }
 
-    public DCBurnEventsResponse execute() throws IOException {
+    public DCBurnEventsResponse execute() throws ApiException {
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
         Call call = client.buildCall(UrlConstant.DC_BURNS_PATH, HttpMethod.GET, queryParams, null, null);

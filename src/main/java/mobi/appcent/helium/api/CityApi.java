@@ -1,6 +1,7 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.city.CitiesRequest;
 import mobi.appcent.helium.request.city.CityByGivenCityIdRequest;
@@ -12,7 +13,7 @@ import mobi.appcent.helium.model.Pair;
 import okhttp3.Call;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,22 +28,17 @@ public class CityApi extends BaseApi implements ICityApi{
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/cities";
-    }
-
-    @Override
-    public CitiesRequest getCities() throws IOException {
+    public CitiesRequest getCities(){
         return new CitiesRequest(sdkClient);
     }
 
     @Override
-    public CityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId) throws IOException {
+    public CityByGivenCityIdRequest getCityByGivenCityId(@NotNull String cityId){
         return new CityByGivenCityIdRequest(sdkClient, cityId);
     }
 
     @Override
-    public HotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId) throws IOException {
+    public HotspotsByGivenCityIdRequest getHotspotsByGivenCityId(@NotNull String cityId){
         return new HotspotsByGivenCityIdRequest(sdkClient, cityId);
     }
 }

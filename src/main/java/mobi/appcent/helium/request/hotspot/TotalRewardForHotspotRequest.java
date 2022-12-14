@@ -8,6 +8,7 @@ import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.HotspotApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -48,7 +49,7 @@ public class TotalRewardForHotspotRequest extends BaseRequest {
         return this;
     }
 
-    public HotspotTotalRewardResponse execute() throws IOException {
+    public HotspotTotalRewardResponse execute() throws ApiException {
         String path = UrlConstant.HOTSPOTS_PATH +"/"+address+"/rewards/sum";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));
@@ -60,7 +61,7 @@ public class TotalRewardForHotspotRequest extends BaseRequest {
     }
 
     @Override
-    public <T> T handleResponse(Response response, Type returnType) throws IOException {
+    public <T> T handleResponse(Response response, Type returnType) throws ApiException, IOException {
         if(response.isSuccessful()) {
             if (response.body() != null) {
                 JsonObject obj = new JsonParser().parse(response.body().string()).getAsJsonObject();

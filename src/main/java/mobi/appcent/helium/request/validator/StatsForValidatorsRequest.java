@@ -8,7 +8,7 @@ import mobi.appcent.helium.response.validator.ValidatorsStatsResponse;
 import mobi.appcent.helium.request.BaseRequest;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -22,7 +22,7 @@ public class StatsForValidatorsRequest extends BaseRequest {
         this.client = client;
     }
 
-    public ValidatorsStatsResponse execute() throws IOException {
+    public ValidatorsStatsResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + "/stats";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(ValidatorsStatsResponse.class).getType();

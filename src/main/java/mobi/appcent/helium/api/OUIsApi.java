@@ -9,10 +9,6 @@ import mobi.appcent.helium.request.oui.OUIStatsRequest;
  * Created by erenalpaslan on 26.11.2022
  */
 public class OUIsApi extends BaseApi implements IOUIsApi{
-    @Override
-    String path() {
-        return null;
-    }
 
     public static OUIsApi getInstance() {
         return new OUIsApi();

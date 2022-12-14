@@ -2,7 +2,7 @@ package mobi.appcent.helium.api;
 
 import mobi.appcent.helium.request.validator.*;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 
 /**
  * Created by erenalpaslan on 7.11.2022
@@ -12,73 +12,69 @@ public class ValidatorApi extends BaseApi implements IValidatorsApi{
     public static ValidatorApi getInstance() {
         return new ValidatorApi();
     }
-    @Override
-    String path() {
-        return BASE_URL + "/validators";
-    }
 
     @Override
-    public ValidatorsRequest getValidators() throws IOException {
+    public ValidatorsRequest getValidators(){
         return new ValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ValidatorForAddressRequest getValidatorForAddress(String address) throws IOException {
+    public ValidatorForAddressRequest getValidatorForAddress(String address) {
         return new ValidatorForAddressRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorsForNameRequest getValidatorsForName(String name) throws IOException {
+    public ValidatorsForNameRequest getValidatorsForName(String name){
         return new ValidatorsForNameRequest(sdkClient, name);
     }
 
     @Override
-    public SearchValidatorsByNameRequest searchValidatorsByName() throws IOException {
+    public SearchValidatorsByNameRequest searchValidatorsByName(){
         return new SearchValidatorsByNameRequest(sdkClient);
     }
 
     @Override
-    public ValidatorRolesRequest getValidatorRoles(String address) throws IOException {
+    public ValidatorRolesRequest getValidatorRoles(String address){
         return new ValidatorRolesRequest(sdkClient, address);
     }
 
     @Override
-    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address) throws IOException {
+    public ValidatorRolesCountsRequest getValidatorRolesCounts(String address){
         return new ValidatorRolesCountsRequest(sdkClient, address);
     }
 
     @Override
-    public StatsForValidatorsRequest getStatsForValidators() throws IOException {
+    public StatsForValidatorsRequest getStatsForValidators(){
         return new StatsForValidatorsRequest(sdkClient);
     }
 
     @Override
-    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators() throws IOException {
+    public CurrentlyElectedValidatorsRequest getCurrentlyElectedValidators(){
         return new CurrentlyElectedValidatorsRequest(sdkClient);
     }
 
     @Override
-    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height) throws IOException {
+    public ElectedValidatorsAtBlockRequest getElectedValidatorsAtBlock(Integer height){
         return new ElectedValidatorsAtBlockRequest(sdkClient, height);
     }
 
     @Override
-    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash) throws IOException {
+    public ElectedValidatorsInElectionRequest getElectedValidatorsInElection(Integer hash){
         return new ElectedValidatorsInElectionRequest(sdkClient, hash);
     }
 
     @Override
-    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime) throws IOException {
+    public RewardsForValidatorRequest getRewardsForValidator(String address, String minTime, String maxTime){
         return new RewardsForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime) throws IOException {
+    public RewardTotalForValidatorRequest getRewardTotalForValidator(String address, String minTime, String maxTime){
         return new RewardTotalForValidatorRequest(sdkClient, address, minTime, maxTime);
     }
 
     @Override
-    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime) throws IOException {
+    public RewardTotalForAllValidatorsRequest getRewardTotalForAllValidators(String address, String minTime, String maxTime){
         return new RewardTotalForAllValidatorsRequest(sdkClient, address, minTime, maxTime);
     }
 }

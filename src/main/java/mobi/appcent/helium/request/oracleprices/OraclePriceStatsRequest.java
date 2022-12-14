@@ -7,11 +7,10 @@ import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.oracle.CurrentAndHistoricalOraclePricesResponse;
 import mobi.appcent.helium.response.oracle.OraclePricesStatsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -33,7 +32,7 @@ public class OraclePriceStatsRequest extends BaseRequest {
         return this;
     }
 
-    public OraclePricesStatsResponse execute() throws IOException {
+    public OraclePricesStatsResponse execute() throws ApiException {
         String path = UrlConstant.ORACLE_PRICES_PATH + "/prices/stats";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));

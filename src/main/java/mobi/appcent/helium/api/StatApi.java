@@ -1,6 +1,7 @@
 package mobi.appcent.helium.api;
 
 import com.google.gson.reflect.TypeToken;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.stat.BlockchainStatsRequest;
 import mobi.appcent.helium.request.stat.TokenSupplyRequest;
@@ -9,7 +10,7 @@ import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.response.stat.TokenSupplyResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,17 +25,12 @@ public class StatApi extends BaseApi implements IStatApi {
     }
 
     @Override
-    String path() {
-        return BASE_URL + "/stats";
-    }
-
-    @Override
-    public BlockchainStatsRequest getBlockchainStats() throws IOException {
+    public BlockchainStatsRequest getBlockchainStats() {
         return new BlockchainStatsRequest(sdkClient);
     }
 
     @Override
-    public TokenSupplyRequest getTokenSupply() throws IOException {
+    public TokenSupplyRequest getTokenSupply() {
         return new TokenSupplyRequest(sdkClient);
     }
 }

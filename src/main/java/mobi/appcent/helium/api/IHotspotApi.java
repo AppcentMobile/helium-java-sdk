@@ -3,41 +3,41 @@ package mobi.appcent.helium.api;
 import mobi.appcent.helium.request.hotspot.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 
 public interface IHotspotApi {
-    HotspotsRequest getHotspots() throws IOException;
+    HotspotsRequest getHotspots() throws ApiException;
 
-    HotspotByGivenAddressRequest getHotspotByGivenAddress() throws IOException;
+    HotspotByGivenAddressRequest getHotspotByGivenAddress() throws ApiException;
 
-    HotspotsByGivenNameRequest getHotspotsByGivenName(String name) throws IOException;
+    HotspotsByGivenNameRequest getHotspotsByGivenName(String name) throws ApiException;
 
-    SearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws IOException;
+    SearchHotspotsByGivenNameRequest searchHotspotsByGivenName() throws ApiException;
 
-    SearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws IOException;
+    SearchHotspotsByLocationDistanceRequest searchHotspotsByLocationDistance() throws ApiException;
 
-    SearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws IOException;
+    SearchHotspotsByLocationBoxRequest searchHotspotsByLocationBox() throws ApiException;
 
-    HotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws IOException;
+    HotspotsByGivenH3IndexRequest getHotspotsByGivenH3Index(String index) throws ApiException;
 
-    HotspotRolesRequest getHotspotRoles(@NotNull String address) throws IOException;
+    HotspotRolesRequest getHotspotRoles(@NotNull String address) throws ApiException;
 
-    HotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws IOException;
+    HotspotsRolesCountRequest getHotspotsRolesCount(@NotNull String address) throws ApiException;
 
-    HotspotElectionsRequest getHotspotElections(@NotNull String address) throws IOException;
+    HotspotElectionsRequest getHotspotElections(@NotNull String address) throws ApiException;
 
-    ElectedHotspotsRequest getElectedHotspots() throws IOException;
+    ElectedHotspotsRequest getElectedHotspots() throws ApiException;
 
-    HotspotChallengesRequest getHotspotChallanges(@NotNull String address) throws IOException;
+    HotspotChallengesRequest getHotspotChallanges(@NotNull String address) throws ApiException;
 
-    RewardsForHotspotsRequest getRewardsForHotspot(@NotNull String address) throws IOException;
+    RewardsForHotspotsRequest getRewardsForHotspot(@NotNull String address) throws ApiException;
 
-    RewardsForHotspotsByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws IOException;
+    RewardsForHotspotsByGivenRewardBlockRequest getRewardsForHotspotByGivenRewardBlock(@NotNull String address) throws ApiException;
 
-    TotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws IOException;
+    TotalRewardForHotspotRequest getTotalRewardForHotspot(@NotNull String address) throws ApiException;
 
-    WitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws IOException;
+    WitnessesForHotspotRequest getWitnessesForHotspot(@NotNull String address) throws ApiException;
 
-    WitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws IOException;
+    WitnessedForHotspotRequest getWitnessedForHotspot(@NotNull String address) throws ApiException;
 
 }

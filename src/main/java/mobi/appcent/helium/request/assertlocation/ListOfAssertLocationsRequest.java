@@ -7,11 +7,10 @@ import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.account.AccountsResponse;
 import mobi.appcent.helium.response.assertlocation.ListOfAssertLocationsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -49,7 +48,7 @@ public class ListOfAssertLocationsRequest extends BaseRequest {
         return this;
     }
 
-    public ListOfAssertLocationsResponse execute() throws IOException {
+    public ListOfAssertLocationsResponse execute() throws ApiException {
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));

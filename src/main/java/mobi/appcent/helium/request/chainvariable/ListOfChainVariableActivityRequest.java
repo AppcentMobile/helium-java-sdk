@@ -7,11 +7,10 @@ import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.chainvariable.ChainVariablesResponse;
 import mobi.appcent.helium.response.chainvariable.ListOfChainVariableActivityResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -31,7 +30,7 @@ public class ListOfChainVariableActivityRequest extends BaseRequest {
         return this;
     }
 
-    public ListOfChainVariableActivityResponse execute() throws IOException {
+    public ListOfChainVariableActivityResponse execute() throws ApiException {
         String path = UrlConstant.CHAIN_VARIABLES_PATH + "/activity";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));

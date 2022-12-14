@@ -5,6 +5,7 @@ import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.CityApi;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -37,7 +38,7 @@ public class CitiesRequest extends BaseRequest {
         return this;
     }
 
-    public CitiesResponse execute() throws IOException {
+    public CitiesResponse execute() throws ApiException {
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.SEARCH, search));
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));

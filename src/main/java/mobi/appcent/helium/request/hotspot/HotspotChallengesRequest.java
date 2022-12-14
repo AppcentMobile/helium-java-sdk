@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.common.FieldConstant;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
@@ -46,7 +47,7 @@ public class HotspotChallengesRequest extends BaseRequest {
         this.client = client;
         this.address = address; }
 
-    public ChallengesResponse execute() throws IOException {
+    public ChallengesResponse execute() throws ApiException {
         String path = UrlConstant.HOTSPOTS_PATH +"/"+address+"/challenges";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));
