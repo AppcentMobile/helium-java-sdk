@@ -6,10 +6,9 @@ import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.ouis.OuiStatsResponse;
-import mobi.appcent.helium.response.ouis.OuisResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -23,7 +22,7 @@ public class OUIStatsRequest extends BaseRequest {
         this.client = client;
     }
 
-    public OuiStatsResponse execute() throws IOException {
+    public OuiStatsResponse execute() throws ApiException {
         String path = UrlConstant.OUIS_PATH + "/stats";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(OuiStatsResponse.class).getType();

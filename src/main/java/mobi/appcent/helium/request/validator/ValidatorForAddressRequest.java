@@ -8,7 +8,7 @@ import mobi.appcent.helium.response.validator.ValidatorResponse;
 import mobi.appcent.helium.request.BaseRequest;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -24,7 +24,7 @@ public class ValidatorForAddressRequest extends BaseRequest {
         this.address = address;
     }
 
-    public ValidatorResponse execute() throws IOException {
+    public ValidatorResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + "/" + address;
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(ValidatorResponse.class).getType();

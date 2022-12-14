@@ -4,6 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import mobi.appcent.helium.HeliumSdkClient;
 import mobi.appcent.helium.api.StatApi;
 import mobi.appcent.helium.common.UrlConstant;
+import mobi.appcent.helium.exception.ApiException;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.block.BlockchainStatsResponse;
@@ -23,7 +24,7 @@ public class BlockchainStatsRequest extends BaseRequest {
         this.client = client;
     }
 
-    public BlockchainStatsResponse execute() throws IOException {
+    public BlockchainStatsResponse execute() throws ApiException {
         Call call = client.buildCall(UrlConstant.STAT_PATH, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(BlockchainStatsResponse.class).getType();
         return execute(call, type);

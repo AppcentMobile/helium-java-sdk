@@ -9,7 +9,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.oracle.OraclePriceResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -20,7 +20,7 @@ import java.util.Collections;
 public class CurrentOraclePriceRequest extends BaseRequest {
     private final HeliumSdkClient client;
 
-    public OraclePriceResponse execute() throws IOException {
+    public OraclePriceResponse execute() throws ApiException {
         String path = UrlConstant.ORACLE_PRICES_PATH + "/prices/current";
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(OraclePriceResponse.class).getType();

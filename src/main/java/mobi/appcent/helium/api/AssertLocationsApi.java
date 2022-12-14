@@ -6,10 +6,6 @@ import mobi.appcent.helium.request.assertlocation.ListOfAssertLocationsRequest;
  * Created by erenalpaslan on 3.12.2022
  */
 public class AssertLocationsApi extends BaseApi implements IAssertLocationsAPI{
-    @Override
-    String path() {
-        return null;
-    }
 
     public static AssertLocationsApi getInstance() {
         return new AssertLocationsApi();

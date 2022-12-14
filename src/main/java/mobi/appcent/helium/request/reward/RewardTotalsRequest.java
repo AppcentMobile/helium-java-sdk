@@ -7,11 +7,10 @@ import mobi.appcent.helium.common.UrlConstant;
 import mobi.appcent.helium.httpClient.HttpMethod;
 import mobi.appcent.helium.model.Pair;
 import mobi.appcent.helium.request.BaseRequest;
-import mobi.appcent.helium.response.account.AccountsResponse;
 import mobi.appcent.helium.response.reward.RewardTotalsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -39,7 +38,7 @@ public class RewardTotalsRequest extends BaseRequest {
         return this;
     }
 
-    public RewardTotalsResponse execute() throws IOException {
+    public RewardTotalsResponse execute() throws ApiException {
         String path = UrlConstant.REWARDS_PATH + "/sum";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.MIN_TIME, minTime));

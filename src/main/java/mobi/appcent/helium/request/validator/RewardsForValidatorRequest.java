@@ -10,7 +10,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.hotspot.HotspotRewardResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public class RewardsForValidatorRequest extends BaseRequest {
         return this;
     }
 
-    public HotspotRewardResponse execute() throws IOException {
+    public HotspotRewardResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + "/" + address + "/rewards";
         ArrayList<Pair> queryParams = new ArrayList<>();
         queryParams.add(Pair.create(FieldConstant.CURSOR, cursor));

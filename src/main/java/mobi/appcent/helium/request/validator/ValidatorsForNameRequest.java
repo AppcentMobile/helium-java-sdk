@@ -8,7 +8,7 @@ import mobi.appcent.helium.request.BaseRequest;
 import mobi.appcent.helium.response.validator.ValidatorsResponse;
 import okhttp3.Call;
 
-import java.io.IOException;
+import mobi.appcent.helium.exception.ApiException;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -24,7 +24,7 @@ public class ValidatorsForNameRequest extends BaseRequest {
         this.name = name;
     }
 
-    public ValidatorsResponse execute() throws IOException {
+    public ValidatorsResponse execute() throws ApiException {
         String path = UrlConstant.VALIDATORS_PATH + "/name/" + name;
         Call call = client.buildCall(path, HttpMethod.GET, Collections.emptyList(), null, null);
         Type type = TypeToken.get(ValidatorsResponse.class).getType();

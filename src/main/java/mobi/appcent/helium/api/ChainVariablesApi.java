@@ -9,10 +9,6 @@ import mobi.appcent.helium.request.chainvariable.ValueOfAChainVariableRequest;
  * Created by erenalpaslan on 26.11.2022
  */
 public class ChainVariablesApi extends BaseApi implements IChainVariablesApi{
-    @Override
-    String path() {
-        return UrlConstant.CHAIN_VARIABLES_PATH;
-    }
 
     public static ChainVariablesApi getInstance() {
         return new ChainVariablesApi();
