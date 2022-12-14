@@ -34,12 +34,12 @@ public abstract class BaseRequest {
         if(response.isSuccessful()) {
             if (response.body() != null) {
                 return deserialize(response.body().string(), returnType);
-            }else {
-                throw new ApiException(response.code(), "Response body is empty");
             }
         }else {
             throw new ApiException(response.code(), response.message());
         }
+
+        return null;
     }
 
     public static <T> T deserialize(String body, Type returnType) throws ApiException {
