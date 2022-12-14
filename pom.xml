@@ -25,11 +25,6 @@
             <version>2.9.1</version>
         </dependency>
         <dependency>
-            <groupId>com.github.jasminb</groupId>
-            <artifactId>jsonapi-converter</artifactId>
-            <version>0.11</version>
-        </dependency>
-        <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
             <version>4.10.0</version>
