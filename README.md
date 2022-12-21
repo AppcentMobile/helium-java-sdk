@@ -1,13 +1,10 @@
 # helium-java-sdk
 
-> **Warning**
-> This project is at a very early stage and not ready to be used in the wild.
-
 A Java SDK for [Helium Blockchain APIs](https://docs.helium.com/api/blockchain/introduction/). 
 
 Easily integrate to Helium Blockhain API in your java applications for `Android`, `Backend`, `Console`...
 
-The SDK is based on `Java 1.8` uses the following dependencies:
+The SDK is based on `Java 1.8` and uses the following dependencies:
 
 * OkHttp3
 * Gson  
@@ -15,12 +12,45 @@ The SDK is based on `Java 1.8` uses the following dependencies:
 # Usage
 
 ## Installation
+You can add `helium-java-sdk` to your project by using popular build systems like Gradle or Maven. 
 
-> **TODO**: Update here after GithubRepository integration.
+### Gradle
+Add JitPack repository in your root build.gradle file.
+```groovy
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
 
-The SDK is not available on any maven repository yet. Currently only way to include it in your projects is by copying the source code. 
+Add the dependency in your module level build.gradle file.
+```groovy
+dependencies {
+    implementation 'com.github.AppcentMobile:helium-java-sdk:1.0.0-SNAPSHOT'
+}
+```
 
-When we feel comfortable on releasing first alpha, it will be available on a maven repository.
+### Maven
+Add JitPack repository to your build file.
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
+Add the dependency.
+```xml
+<dependency>
+    <groupId>com.github.AppcentMobile</groupId>
+    <artifactId>helium-java-sdk</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</dependency>
+```
+
 
 ## Initialization
 
