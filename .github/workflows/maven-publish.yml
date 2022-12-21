@@ -17,8 +17,6 @@ jobs:
         run: mvn --batch-mode deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set branch name
-        run: echo "::set-output name=branch_name::$(echo ${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}})"
       - name: Create Release ✅
         id: create_release
         uses: actions/create-release@v1
